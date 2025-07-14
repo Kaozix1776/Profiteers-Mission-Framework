@@ -1,32 +1,32 @@
 //executed from initPlayerLocal. note that some aspects are handled in applyHoldAction.sqf and zenCustomModulesRegister.sqf
 
-if (count TAS_vassPrebriefing > 0) then {
-	"Shop System Prebriefing" hintC TAS_vassPrebriefing;
+if (count PROF_vassPrebriefing > 0) then {
+	"Shop System Prebriefing" hintC PROF_vassPrebriefing;
 } else {
-	["TAS_fnc_vassPlayerInit: TAS_vassPrebriefing is empty and therefore will not be displayed!"] call TAS_fnc_error;
+	["PROF_fnc_vassPlayerInit: PROF_vassPrebriefing is empty and therefore will not be displayed!"] call PROF_fnc_error;
 };
 
 //save player loadout from editor so that zeus can custom-make loadouts
 player setVariable ["editorLoadout",getUnitLoadout player]; //not profileNameSpace since unique to each mission
 //if player does not have money from previous missions, start at 700
-private _initialRetrievedBalance = profileNamespace getVariable [TAS_vassShopSystemVariable,TAS_vassDefaultBalance];
-if (_initialRetrievedBalance == TAS_vassDefaultBalance) then {
-	profileNamespace setVariable [TAS_vassShopSystemVariable,TAS_vassDefaultBalance];
+private _initialRetrievedBalance = profileNamespace getVariable [PROF_vassShopSystemVariable,PROF_vassDefaultBalance];
+if (_initialRetrievedBalance == PROF_vassDefaultBalance) then {
+	profileNamespace setVariable [PROF_vassShopSystemVariable,PROF_vassDefaultBalance];
 };
 
-if (TAS_vassBonusStartingMoney != 0) then {
+if (PROF_vassBonusStartingMoney != 0) then {
 	private _moreMoneyAtStart = _initialRetrievedBalance + 700;
-	profileNamespace setVariable [TAS_vassShopSystemVariable,_moreMoneyAtStart];
+	profileNamespace setVariable [PROF_vassShopSystemVariable,_moreMoneyAtStart];
 };
 
 //set player loadout cost to 0 to start with
 player setVariable ["rebuyCost",0]; //not profileNameSpace since unique to each mission
 //apply loadout from last mission
-private _initialLoadout = profileNamespace getVariable [TAS_vassShopSystemLoadoutVariable,player getVariable "editorLoadout"]; //if no loadout saved, use editor loadout
+private _initialLoadout = profileNamespace getVariable [PROF_vassShopSystemLoadoutVariable,player getVariable "editorLoadout"]; //if no loadout saved, use editor loadout
 player setUnitLoadout _initialLoadout;
 
 //player self interact to see balance
-seeSelfBalanceAction = ["viewSelfBalance","View Current Balance","",{private _money = profileNamespace getVariable TAS_vassShopSystemVariable; hint format ["You have %1$ in cash.",_money];},{true}] call ace_interact_menu_fnc_createAction;
+seeSelfBalanceAction = ["viewSelfBalance","View Current Balance","",{private _money = profileNamespace getVariable PROF_vassShopSystemVariable; hint format ["You have %1$ in cash.",_money];},{true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], seeSelfBalanceAction] call ace_interact_menu_fnc_addActionToObject;
 
 {
@@ -58,12 +58,12 @@ seeSelfBalanceAction = ["viewSelfBalance","View Current Balance","",{private _mo
 	*/
 	_shopAction = [_shop,"Open Shop",5] call TER_fnc_addShop;
 	} else {
-		if (isServer || (serverCommandAvailable "#logout") || (!isNull (getAssignedCuratorLogic player))) then { //only do visual error if server (singleplayer testing) or admin or zeus
-			systemchat format ["CRITICAL ERROR: One or more objects (%1) in TAS_vassShops does not exist!",_x];
+		if (isServer || (serverCommandAvailable "#logout") || (!isNull (gePROFsignedCuratorLogic player))) then { //only do visual error if server (singleplayer testing) or admin or zeus
+			systemchat format ["CRITICAL ERROR: One or more objects (%1) in PROF_vassShops does not exist!",_x];
 		};
-		diag_log text format ["TAS-MISSION-TEMPLATE WARNING: One or more objects (%1) in TAS_vassShops does not exist!",_x];
+		diag_log text format ["PROF-MISSION-TEMPLATE WARNING: One or more objects (%1) in PROF_vassShops does not exist!",_x];
 	};
-} forEach TAS_vassShops;
+} forEach PROF_vassShops;
 
 
 

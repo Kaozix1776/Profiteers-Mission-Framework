@@ -40,14 +40,14 @@ switch _mode do {
 	case "getMoney":{
 		_params params ["_unit"];
 		/* EXAMPLE */
-		profileNamespace getVariable [TAS_vassShopSystemVariable,0]
+		profileNamespace getVariable [PROF_vassShopSystemVariable,0]
 	};
 	case "setMoney":{
 		_params params ["_unit", "_change"];
 		/* EXAMPLE */
-		private _tasOldMoney = profileNamespace getVariable TAS_vassShopSystemVariable;
-		private _tasNewMoney = _tasOldMoney + _change;
-		profileNamespace setVariable [TAS_vassShopSystemVariable,_tasNewMoney];
+		private _PROFOldMoney = profileNamespace getVariable PROF_vassShopSystemVariable;
+		private _PROFNewMoney = _PROFOldMoney + _change;
+		profileNamespace setVariable [PROF_vassShopSystemVariable,_PROFNewMoney];
 		//maybe add a hint with new money amount here? no because that's handled where this originates usually
 	};
 };

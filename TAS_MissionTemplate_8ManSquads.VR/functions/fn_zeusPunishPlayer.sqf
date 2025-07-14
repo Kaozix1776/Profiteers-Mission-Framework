@@ -5,7 +5,7 @@ if (_debug) then { systemChat format ["Starting fn_zeusPunishPlayer with %1 and 
 
 if (isNull _unit) exitWith {
 	systemChat "Error: place the zeus module on the object that you wish to attach the marker to!";
-	diag_log "TAS MISSION TEMPLATE: fn_zeusPunishPlayer was executed without being placed on an object!";
+	diag_log "PROF MISSION TEMPLATE: fn_zeusPunishPlayer was executed without being placed on an object!";
 };
 
 //ZEN dialog
@@ -20,10 +20,10 @@ private _onConfirm =
 	_in params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
 	if (_debug) then { systemChat format ["Starting fn_zeusPunishPlayer onConfirm with %1 and %2",_unit,_timeout]; };
-	if ((_unit getVariable ["TAS_civsKilledByUnit",0]) < 1) then {
-		_unit setVariable ["TAS_civsKilledByUnit",1];
+	if ((_unit getVariable ["PROF_civsKilledByUnit",0]) < 1) then {
+		_unit setVariable ["PROF_civsKilledByUnit",1];
 	};
-	[_unit,_timeout] remoteExec ["TAS_fnc_punishCivKillerLocal",_unit,true];
+	[_unit,_timeout] remoteExec ["PROF_fnc_punishCivKillerLocal",_unit,true];
 
 	systemChat format ["Sending %1 to timeout for %2 seconds!",name _unit,_timeout];
 };

@@ -16,13 +16,13 @@
 		STRING - created marker
 
 	Examples:
-		[myObjectToFollow,"hd_flag","ColorUNKNOWN","My Awesome Marker Text That People Can See",true,30] remoteExec ["TAS_fnc_markerFollow",2];
-		[myObjectToFollow] remoteExec ["TAS_fnc_markerFollow",2];
+		[myObjectToFollow,"hd_flag","ColorUNKNOWN","My Awesome Marker Text That People Can See",true,30] remoteExec ["PROF_fnc_markerFollow",2];
+		[myObjectToFollow] remoteExec ["PROF_fnc_markerFollow",2];
 */
 //TODO add compatibility for declaring side and creator of markers, plus other options like alpha
 
 if !(isServer) exitWith {
-	[[format ["TAS_fnc_markerFollow called on %1 when it should only be called on server! Arguments: %2",name player,_this],false]] call TAS_fnc_error;
+	[[format ["PROF_fnc_markerFollow called on %1 when it should only be called on server! Arguments: %2",name player,_this],false]] call PROF_fnc_error;
 };
 
 //TODO replace with params
@@ -49,12 +49,12 @@ _marker setMarkerTextLocal _markerText;
 		};
 		sleep _interval;
 	};
-	diag_log format ["TAS MISSION TEMPLATE: fn_markerfollow ceasing operation on marker %1 with name %2 attached to object %3 with deletion status %4!",_marker,_markerText,_attachedObject,_deleteOnDeath];
+	diag_log format ["PROF MISSION TEMPLATE: fn_markerfollow ceasing operation on marker %1 with name %2 attached to object %3 with deletion status %4!",_marker,_markerText,_attachedObject,_deleteOnDeath];
 	//runs when _attachedObject is dead or null
 	if (_deleteOnDeath) then {
 		deleteMarker _marker;
 	};
 };
 
-diag_log format ["TAS MISSION TEMPLATE: fn_markerfollow attaching marker %1 with name %2 to object %3!",_marker,_markerText,_attachedObject];
+diag_log format ["PROF MISSION TEMPLATE: fn_markerfollow attaching marker %1 with name %2 to object %3!",_marker,_markerText,_attachedObject];
 _marker

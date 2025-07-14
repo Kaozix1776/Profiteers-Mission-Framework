@@ -128,7 +128,7 @@ while {true} do {
 ] call (missionNamespace getVariable ["DiscordRichPresence_fnc_update", {}]);
 
 [
-    // ["task",value]
+    // ["PROFk",value]
     ["UpdateDetails","New Details"],
     ["UpdateState","New State"],
     ["UpdateLargeImageKey","New Art Asset"],

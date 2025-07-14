@@ -2,7 +2,7 @@ params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
 if (isNull _unit) exitWith {
 	systemChat "Error: place the Ace Spectator Zeus module on the player you wish to edit the spectator status of!";
-	diag_log "TAS-MISSION-TEMPLATE Error: place the Ace Spectator Zeus module on the player you wish to edit the spectator status of!";
+	diag_log "PROF-MISSION-TEMPLATE Error: place the Ace Spectator Zeus module on the player you wish to edit the spectator status of!";
 };
 
 //ZEN dialog

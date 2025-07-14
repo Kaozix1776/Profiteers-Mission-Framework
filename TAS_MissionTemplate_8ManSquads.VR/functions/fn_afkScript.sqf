@@ -1,12 +1,12 @@
-//TAS Afk Script
+//PROF Afk Script
 //Written by Guac
 //Requirements: CBA, ACE
 
 //function to use in making/unmaking afk
 
-//setup TAS_Afk, if player does not have TAS_Afk already defined then default to false
+//setup PROF_Afk, if player does not have PROF_Afk already defined then default to false
 private _AfkPlayer = player;
-private _isPlayerAfk = _AfkPlayer getVariable ["TAS_Afk", false];
+private _isPlayerAfk = _AfkPlayer getVariable ["PROF_Afk", false];
 
 //if script activates while player is already AFK, then undo what the AFK script did
 //could make into if/else
@@ -20,7 +20,7 @@ if (_isPlayerAfk == true) then
 	_AfkPlayer setCaptive false;
 	[_AfkPlayer] call ace_medical_treatment_fnc_fullHealLocal; //heal again because sometimes explosives damage even when afk
 	[_AfkPlayer, format ["%1 is back from being AFK", name _AfkPlayer]] remoteExec ["globalChat", 0]; //if someone goes afk excessively, then they might be abusing the heal
-	_AfkPlayer setVariable ["TAS_Afk",false];
+	_AfkPlayer setVariable ["PROF_Afk",false];
 };
 
 //when player goes AFK, disable their simulation, make them invisible, and take away their loadout (so they don't have access to radio)
@@ -39,7 +39,7 @@ if (_isPlayerAfk == false) then
 	[_AfkPlayer] call ace_medical_treatment_fnc_fullHealLocal; //watch out: if players realize they get a heal with the afk script, they might abuse it. Going afk is logged in chat.
 	[_AfkPlayer, true] remoteExec ["hideObjectGlobal", 2];
 	[_AfkPlayer, false] remoteExec ["enableSimulationGlobal", 2];
-	_AfkPlayer setVariable ["TAS_Afk",true];
+	_AfkPlayer setVariable ["PROF_Afk",true];
 	[_AfkPlayer, format ["%1 is now AFK", name _AfkPlayer]] remoteExec ["globalChat", 0];
 	systemChat "See your diary entries for how to exit AFK.";
 };

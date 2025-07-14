@@ -8,23 +8,23 @@
 	Note: the 3D icon will have infinite range and will be shown through buildings/terrain.
 
 	Examples:
-	[_object,sideEnemy] remoteExec ["TAS_fnc_markUnit",2]; 			//mark _object regardless of side. Useful for objectives.
-	[cursorTarget,side player] remoteExec ['TAS_fnc_markUnit',2]; 	//mark object that player is looking at IF it is an enemy
+	[_object,sideEnemy] remoteExec ["PROF_fnc_markUnit",2]; 			//mark _object regardless of side. Useful for objectives.
+	[cursorTarget,side player] remoteExec ['PROF_fnc_markUnit',2]; 	//mark object that player is looking at IF it is an enemy
 */
 
 params [["_cursorObject",objNull],["_friendlySide",sideEnemy],["_doMarker",true],["_do3dIcon",true],["_name",""],["_customColor","ColorRed"],["_deleteOnDeath",true]]; //can just pass TRUE to _customColor to auto adapt per side
 
-if (isNull _cursorObject) exitWith {["TAS_fnc_markUnit called with objNull as cursorObject!"] call TAS_fnc_error};
+if (isNull _cursorObject) exitWith {["PROF_fnc_markUnit called with objNull as cursorObject!"] call PROF_fnc_error};
 
-if (_cursorObject getVariable ["TAS_isMarkedUnit",false]) exitWith {[format ["TAS_fnc_markUnit called on a unit already being tracked! Unit: %1",_cursorObject]] call TAS_fnc_error};
+if (_cursorObject getVariable ["PROF_isMarkedUnit",false]) exitWith {[format ["PROF_fnc_markUnit called on a unit already being tracked! Unit: %1",_cursorObject]] call PROF_fnc_error};
 
-if (!(_cursorObject isKindOf "CAManBase") && !(_cursorObject isKindOf "AllVehicles")) exitWith {["TAS_fnc_markUnit called without a unit or vehicle as cursorObject!"] call TAS_fnc_error}; //well, AllVehicles should include soldiers, but not sure if CAManBase is included
+if (!(_cursorObject isKindOf "CAManBase") && !(_cursorObject isKindOf "AllVehicles")) exitWith {["PROF_fnc_markUnit called without a unit or vehicle as cursorObject!"] call PROF_fnc_error}; //well, AllVehicles should include soldiers, but not sure if CAManBase is included
 
-if !(alive _cursorObject) exitWith {["TAS_fnc_markUnit called with a dead object as cursorObject!"] call TAS_fnc_error}; 
+if !(alive _cursorObject) exitWith {["PROF_fnc_markUnit called with a dead object as cursorObject!"] call PROF_fnc_error}; 
 
 private _friendlySides = _friendlySide call BIS_fnc_friendlySides;
 private _objectSide = side _cursorObject;
-if (_objectSide in _friendlySides) exitWith {["TAS_fnc_markUnit called with a friendly object as cursorObject!"] call TAS_fnc_error}; 
+if (_objectSide in _friendlySides) exitWith {["PROF_fnc_markUnit called with a friendly object as cursorObject!"] call PROF_fnc_error}; 
 
 if (_customColor isEqualTo true) then {
 	switch (side _cursorObject) do
@@ -33,19 +33,19 @@ if (_customColor isEqualTo true) then {
 		case east: { _customColor = "ColorEAST" };
 		case independent: { _customColor = "ColorGUER" };
 		case civilian: { _customColor = "ColorCIV" };
-		default { _customColor = "ColorRed"; [format ["TAS_fnc_markUnit called with object %1 with side %2!",_cursorObject,side _cursorObject]] call TAS_fnc_error };
+		default { _customColor = "ColorRed"; [format ["PROF_fnc_markUnit called with object %1 with side %2!",_cursorObject,side _cursorObject]] call PROF_fnc_error };
 	};
 };
 
-[format ["TAS_fnc_markUnit marking unit %1 with color %2!",_cursorObject,_customColor]] call TAS_fnc_error;
-_cursorObject setVariable ["TAS_isMarkedUnit",true];
+[format ["PROF_fnc_markUnit marking unit %1 with color %2!",_cursorObject,_customColor]] call PROF_fnc_error;
+_cursorObject setVariable ["PROF_isMarkedUnit",true];
 
 //ok, we've done input validation and the cursorObject is enemy, so let's mark it
 if (_doMarker) then {
 	if (_deleteOnDeath) then {
-		[_cursorObject,"o_unknown",_customColor,_name,true,1] call TAS_fnc_markerFollow; //no text, dot, red, 1 second between marks
+		[_cursorObject,"o_unknown",_customColor,_name,true,1] call PROF_fnc_markerFollow; //no text, dot, red, 1 second between marks
 	} else {
-		[_cursorObject,"o_unknown",_customColor,_name,false,1] call TAS_fnc_markerFollow; //no text, dot, red, 1 second between marks
+		[_cursorObject,"o_unknown",_customColor,_name,false,1] call PROF_fnc_markerFollow; //no text, dot, red, 1 second between marks
 	};
 };
 

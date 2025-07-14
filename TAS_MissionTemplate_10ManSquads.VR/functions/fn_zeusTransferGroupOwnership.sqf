@@ -5,7 +5,7 @@ params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
 if (isNull _unit) exitWith {
 	systemChat "Error: place the group transfer module on the object that you wish to transfer the ownership of!";
-	diag_log "TAS MISSION TEMPLATE: fn_zeusTransferGroupOwnership was executed without being placed on an object!";
+	diag_log "PROF MISSION TEMPLATE: fn_zeusTransferGroupOwnership was executed without being placed on an object!";
 };
 
 //ZEN dialog
@@ -20,24 +20,24 @@ private _onConfirm =
 	//Get in params again
 	_in params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
-	TAS_GroupToChange = (group _unit);
-	publicVariableServer "TAS_GroupToChange";
+	PROF_GroupToChange = (group _unit);
+	publicVariableServer "PROF_GroupToChange";
 	
 	if (_customId != "") then {
 		private _id = parseNumber _customId;
-		[TAS_GroupToChange,_id] remoteExec ["setGroupOwner",2]; //TODO check if remoteExec works with _id
+		[PROF_GroupToChange,_id] remoteExec ["setGroupOwner",2]; //TODO check if remoteExec works with _id
 		//systemChat str _id;
 	} else {
 		switch (_newOwner) do {
-			case "Server": { [TAS_GroupToChange,2] remoteExec ["setGroupOwner",2]; };
-			case "HC1": { [TAS_GroupToChange,(owner HC1)] remoteExec ["setGroupOwner",2]; };
-			case "HC2": { [TAS_GroupToChange,(owner HC2)] remoteExec ["setGroupOwner",2]; };
-			case "HC3": { [TAS_GroupToChange,(owner HC3)] remoteExec ["setGroupOwner",2]; };
-			case "Player": { [TAS_GroupToChange,remoteExecutedOwner] remoteExec ["setGroupOwner",2]; };
-			default { [TAS_GroupToChange,2] remoteExec ["setGroupOwner",2]; }; //default to server
+			case "Server": { [PROF_GroupToChange,2] remoteExec ["setGroupOwner",2]; };
+			case "HC1": { [PROF_GroupToChange,(owner HC1)] remoteExec ["setGroupOwner",2]; };
+			case "HC2": { [PROF_GroupToChange,(owner HC2)] remoteExec ["setGroupOwner",2]; };
+			case "HC3": { [PROF_GroupToChange,(owner HC3)] remoteExec ["setGroupOwner",2]; };
+			case "Player": { [PROF_GroupToChange,remoteExecutedOwner] remoteExec ["setGroupOwner",2]; };
+			default { [PROF_GroupToChange,2] remoteExec ["setGroupOwner",2]; }; //default to server
 		};
 	};
-	diag_log format ["TAS-MISSION-TEMPLATE transferGroupOwnership: transfering %1 to %3!",TAS_GroupToChange,_newOwner]; //can't get current owner without remoteExecing to server
+	diag_log format ["PROF-MISSION-TEMPLATE transferGroupOwnership: transfering %1 to %3!",PROF_GroupToChange,_newOwner]; //can't get current owner without remoteExecing to server
 };
 
 [

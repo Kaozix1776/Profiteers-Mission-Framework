@@ -4,7 +4,7 @@
 private _outputArray = [];
 
 //mission, map, and template version
-_outputArray pushBack format ["Mission name: %1, Map: %2, Mission Template Version: %3",missionName,worldName,TAS_templateVersion];
+_outputArray pushBack format ["Mission name: %1, Map: %2, Mission Template Version: %3",missionName,worldName,PROF_templateVersion];
 
 
 //time
@@ -111,206 +111,206 @@ _outputArray pushBack format ["Mission Template Settings Check:"];
 	["CHVD_maxView",CHVD_maxView,10000],
 	["CHVD_maxObj",CHVD_maxObj,10000],
 	//bft
-    ["TAS_bftEnabled",TAS_bftEnabled,true],
-	["TAS_bftOnlyShowOwnGroup",TAS_bftOnlyShowOwnGroup,false],
+    ["PROF_bftEnabled",PROF_bftEnabled,true],
+	["PROF_bftOnlyShowOwnGroup",PROF_bftOnlyShowOwnGroup,false],
 	//group icons
-    ["TAS_3dGroupIcons",TAS_3dGroupIcons,true],
-    ["TAS_3dGroupIconsTime",TAS_3dGroupIconsTime,0],
-    ["TAS_3dGroupIconsRange",TAS_3dGroupIconsRange,150],
+    ["PROF_3dGroupIcons",PROF_3dGroupIcons,true],
+    ["PROF_3dGroupIconsTime",PROF_3dGroupIconsTime,0],
+    ["PROF_3dGroupIconsRange",PROF_3dGroupIconsRange,150],
 	//resupply
-    ["TAS_resupplyObjectEnabled",TAS_resupplyObjectEnabled,true],
+    ["PROF_resupplyObjectEnabled",PROF_resupplyObjectEnabled,true],
 	//briefing
-	["TAS_textBriefing",TAS_textBriefing,false],
+	["PROF_textBriefing",PROF_textBriefing,false],
 	//arsenal curate
-	["TAS_arsenalCurate",TAS_arsenalCurate,true],
+	["PROF_arsenalCurate",PROF_arsenalCurate,true],
 	//custom object mapper
-	["TAS_markCustomObjectsMap",TAS_markCustomObjectsMap,false],
+	["PROF_markCustomObjectsMap",PROF_markCustomObjectsMap,false],
 	//buddy blood drawing
-	["TAS_allowBloodDrawing",TAS_allowBloodDrawing,true],
+	["PROF_allowBloodDrawing",PROF_allowBloodDrawing,true],
 	//punish civ killers
-	["TAS_punishCivKillsThreshold",TAS_punishCivKillsThreshold,2],
-	["TAS_punishCivKillTimeout",TAS_punishCivKillTimeout,60],
-	["TAS_punishCivKillsSpectator",TAS_punishCivKillsSpectator,true],
-	["TAS_punishCivKillerTpToLeader",TAS_punishCivKillerTpToLeader,true],
-	["TAS_punishCivKillerHumiliate",TAS_punishCivKillerHumiliate,true],
+	["PROF_punishCivKillsThreshold",PROF_punishCivKillsThreshold,2],
+	["PROF_punishCivKillTimeout",PROF_punishCivKillTimeout,60],
+	["PROF_punishCivKillsSpectator",PROF_punishCivKillsSpectator,true],
+	["PROF_punishCivKillerTpToLeader",PROF_punishCivKillerTpToLeader,true],
+	["PROF_punishCivKillerHumiliate",PROF_punishCivKillerHumiliate,true],
 	//Scav Basic
-	["TAS_scavSystemEnabled",TAS_scavSystemEnabled,false],
-	["TAS_scavInsertActionObject",TAS_scavInsertActionObject,"scavActionObject"],
-	["TAS_scavSafeZoneTpHelper",TAS_scavSafeZoneTpHelper,"scavTpHelper"],
-	["TAS_scavAoMarker",TAS_scavAoMarker,"TAS_ScavZone_Marker"],
-	["TAS_scavBlacklistLocations",TAS_scavBlacklistLocations,["TAS_ObjectiveBlacklistObject_1","TAS_ObjectiveBlacklistObject_2","TAS_ObjectiveBlacklistObject_3","TAS_ObjectiveBlacklistObject_4","TAS_ObjectiveBlacklistObject_5","TAS_ObjectiveBlacklistObject_6","TAS_ObjectiveBlacklistObject_7","TAS_ObjectiveBlacklistObject_8","TAS_ObjectiveBlacklistObject_9","TAS_ObjectiveBlacklistObject_10","TAS_ObjectiveBlacklistObject_11","TAS_ObjectiveBlacklistObject_12","TAS_ObjectiveBlacklistObject_13","TAS_ObjectiveBlacklistObject_14","TAS_ObjectiveBlacklistObject_15"]],
-	["TAS_scavExtractObjects",TAS_scavExtractObjects,["TAS_extract_1","TAS_extract_2","TAS_extract_3","TAS_extract_4","TAS_extract_5","TAS_extract_6","TAS_extract_7","TAS_extract_8","TAS_extract_9","TAS_extract_10","TAS_extract_11","TAS_extract_12","TAS_extract_13","TAS_extract_14","TAS_extract_15"]],
-	["TAS_scavPmcMarkers",TAS_scavPmcMarkers,[]],
+	["PROF_scavSystemEnabled",PROF_scavSystemEnabled,false],
+	["PROF_scavInsertActionObject",PROF_scavInsertActionObject,"scavActionObject"],
+	["PROF_scavSafeZoneTpHelper",PROF_scavSafeZoneTpHelper,"scavTpHelper"],
+	["PROF_scavAoMarker",PROF_scavAoMarker,"PROF_ScavZone_Marker"],
+	["PROF_scavBlacklistLocations",PROF_scavBlacklistLocations,["PROF_ObjectiveBlacklistObject_1","PROF_ObjectiveBlacklistObject_2","PROF_ObjectiveBlacklistObject_3","PROF_ObjectiveBlacklistObject_4","PROF_ObjectiveBlacklistObject_5","PROF_ObjectiveBlacklistObject_6","PROF_ObjectiveBlacklistObject_7","PROF_ObjectiveBlacklistObject_8","PROF_ObjectiveBlacklistObject_9","PROF_ObjectiveBlacklistObject_10","PROF_ObjectiveBlacklistObject_11","PROF_ObjectiveBlacklistObject_12","PROF_ObjectiveBlacklistObject_13","PROF_ObjectiveBlacklistObject_14","PROF_ObjectiveBlacklistObject_15"]],
+	["PROF_scavExtractObjects",PROF_scavExtractObjects,["PROF_extract_1","PROF_extract_2","PROF_extract_3","PROF_extract_4","PROF_extract_5","PROF_extract_6","PROF_extract_7","PROF_extract_8","PROF_extract_9","PROF_extract_10","PROF_extract_11","PROF_extract_12","PROF_extract_13","PROF_extract_14","PROF_extract_15"]],
+	["PROF_scavPmcMarkers",PROF_scavPmcMarkers,[]],
 	//Scav Advanced
-	["TAS_scavNumberOfObjectives",TAS_scavNumberOfObjectives,10],
-	["TAS_scavSkill",TAS_scavSkill,[["general",0.8],["courage",0.8],["aimingAccuracy",0.25],["aimingShake",0.25],["aimingSpeed",0.25],["commanding",0.8],["spotDistance",0.25],["spotTime",0.25],["reloadSpeed",0.3]]],
-	["TAS_scavRadioFreq",TAS_scavRadioFreq,"44"],
-	["TAS_scavValuableClassname",TAS_scavValuableClassname,"TAS_RationPizza"],
-	["TAS_scavRewardPerItem",TAS_scavRewardPerItem,100],
-	["TAS_scavStartingValuables",TAS_scavStartingValuables,10],
-	["TAS_scavNeededValuables",TAS_scavNeededValuables,3],
-	["TAS_scavSleepInterval",TAS_scavSleepInterval,120],
-	["TAS_scavPlayerDistanceThreshold",TAS_scavPlayerDistanceThreshold,400],
-	["TAS_scavObjectiveDistanceThreshold",TAS_scavObjectiveDistanceThreshold,200],
-	["TAS_scavPlayerSide",TAS_scavPlayerSide,west],
-	["TAS_scavAiSide",TAS_scavAiSide,independent],
-	["TAS_scavAiRoamerSide",TAS_scavAiRoamerSide,east],
-	["TAS_scavRoamersSmall",TAS_scavRoamersSmall,7],
-	["TAS_scavRoamersBig",TAS_scavRoamersBig,7],
-	["TAS_scavRoamersSmallPatrolChance",TAS_scavRoamersSmallPatrolChance,100],
-	["TAS_scavRoamersBigPatrolChance",TAS_scavRoamersBigPatrolChance,0],
-	["TAS_scavRoamersObjectiveDistance",TAS_scavRoamersObjectiveDistance,200],
-	["TAS_scavRoamersPlayerDistance",TAS_scavRoamersPlayerDistance,400],
-	["TAS_scavRespawnRoamers",TAS_scavRespawnRoamers,true],
-	["TAS_scavRespawnObjectives",TAS_scavRespawnObjectives,true],
+	["PROF_scavNumberOfObjectives",PROF_scavNumberOfObjectives,10],
+	["PROF_scavSkill",PROF_scavSkill,[["general",0.8],["courage",0.8],["aimingAccuracy",0.25],["aimingShake",0.25],["aimingSpeed",0.25],["commanding",0.8],["spotDistance",0.25],["spotTime",0.25],["reloadSpeed",0.3]]],
+	["PROF_scavRadioFreq",PROF_scavRadioFreq,"44"],
+	["PROF_scavValuableClassname",PROF_scavValuableClassname,"PROF_RationPizza"],
+	["PROF_scavRewardPerItem",PROF_scavRewardPerItem,100],
+	["PROF_scavStartingValuables",PROF_scavStartingValuables,10],
+	["PROF_scavNeededValuables",PROF_scavNeededValuables,3],
+	["PROF_scavSleepInterval",PROF_scavSleepInterval,120],
+	["PROF_scavPlayerDistanceThreshold",PROF_scavPlayerDistanceThreshold,400],
+	["PROF_scavObjectiveDistanceThreshold",PROF_scavObjectiveDistanceThreshold,200],
+	["PROF_scavPlayerSide",PROF_scavPlayerSide,west],
+	["PROF_scavAiSide",PROF_scavAiSide,independent],
+	["PROF_scavAiRoamerSide",PROF_scavAiRoamerSide,east],
+	["PROF_scavRoamersSmall",PROF_scavRoamersSmall,7],
+	["PROF_scavRoamersBig",PROF_scavRoamersBig,7],
+	["PROF_scavRoamersSmallPatrolChance",PROF_scavRoamersSmallPatrolChance,100],
+	["PROF_scavRoamersBigPatrolChance",PROF_scavRoamersBigPatrolChance,0],
+	["PROF_scavRoamersObjectiveDistance",PROF_scavRoamersObjectiveDistance,200],
+	["PROF_scavRoamersPlayerDistance",PROF_scavRoamersPlayerDistance,400],
+	["PROF_scavRespawnRoamers",PROF_scavRespawnRoamers,true],
+	["PROF_scavRespawnObjectives",PROF_scavRespawnObjectives,true],
 	//Spotting system/marking units
-	["TAS_addUnitMarkAction",TAS_addUnitMarkAction,false],
-	["TAS_markTargetOnMap",TAS_markTargetOnMap,true],
-	["TAS_markTarget3d",TAS_markTarget3d,true],
+	["PROF_addUnitMarkAction",PROF_addUnitMarkAction,false],
+	["PROF_markTargetOnMap",PROF_markTargetOnMap,true],
+	["PROF_markTarget3d",PROF_markTarget3d,true],
 	//////////////////////////////////
 	/////////Inventory Options////////
 	//////////////////////////////////
 	//radio assignment
-	["TAS_radiosEnabled",TAS_radiosEnabled,true],
-	["TAS_NoSquadleadLr",TAS_NoSquadleadLr,true],
-	["TAS_radioAdditionals",TAS_radioAdditionals,false],
-	["TAS_radioPersonal",TAS_radioPersonal,"TFAR_anprc152"],
-	["TAS_radioBackpack",TAS_radioBackpack,"TFAR_anprc155_coyote"],
+	["PROF_radiosEnabled",PROF_radiosEnabled,true],
+	["PROF_NoSquadleadLr",PROF_NoSquadleadLr,true],
+	["PROF_radioAdditionals",PROF_radioAdditionals,false],
+	["PROF_radioPersonal",PROF_radioPersonal,"TFAR_anprc152"],
+	["PROF_radioBackpack",PROF_radioBackpack,"TFAR_anprc155_coyote"],
 	//config loadouts
-	["TAS_useConfigLoadout",TAS_useConfigLoadout,false],
-	["TAS_configLoadoutCustom",TAS_configLoadoutCustom,false],
-	["TAS_configFaction",TAS_configFaction,"BLU_F"],
-	["TAS_configUnitPrefix",TAS_configUnitPrefix,""],
-	["TAS_defaultConfigUnit",TAS_defaultConfigUnit,"Rifleman"],
-	["TAS_configLoadoutNumber",TAS_configLoadoutNumber,0],
+	["PROF_useConfigLoadout",PROF_useConfigLoadout,false],
+	["PROF_configLoadoutCustom",PROF_configLoadoutCustom,false],
+	["PROF_configFaction",PROF_configFaction,"BLU_F"],
+	["PROF_configUnitPrefix",PROF_configUnitPrefix,""],
+	["PROF_defaultConfigUnit",PROF_defaultConfigUnit,"Rifleman"],
+	["PROF_configLoadoutNumber",PROF_configLoadoutNumber,0],
 	//populate inventory
-	["TAS_populateInventory",TAS_populateInventory,true],
-	["TAS_inventoryAddGps",TAS_inventoryAddGps,true],
+	["PROF_populateInventory",PROF_populateInventory,true],
+	["PROF_inventoryAddGps",PROF_inventoryAddGps,true],
 	//role based arsenals
-	["TAS_roleBasedArsenals",TAS_roleBasedArsenals,false],
-	["TAS_visibleArsenalBoxes",TAS_visibleArsenalBoxes,["arsenal_1","arsenal_2"]],
+	["PROF_roleBasedArsenals",PROF_roleBasedArsenals,false],
+	["PROF_visibleArsenalBoxes",PROF_visibleArsenalBoxes,["arsenal_1","arsenal_2"]],
 	//////////////////////////////////
 	/////////Respawns Options/////////
 	//////////////////////////////////
 	//respawn gear
-	["TAS_respawnDeathGear",TAS_respawnDeathGear,false],
-	["TAS_respawnArsenalGear",TAS_respawnArsenalGear,true],
+	["PROF_respawnDeathGear",PROF_respawnDeathGear,false],
+	["PROF_respawnArsenalGear",PROF_respawnArsenalGear,true],
 	//respawn spectator
-	["TAS_respawnSpectator",TAS_respawnSpectator,false],
-	["TAS_respawnSpectatorForceInterface",TAS_respawnSpectatorForceInterface,false],
-	["TAS_respawnSpectatorHideBody",TAS_respawnSpectatorHideBody,true],
-	["TAS_respawnSpectatorTime",TAS_respawnSpectatorTime,30],
+	["PROF_respawnSpectator",PROF_respawnSpectator,false],
+	["PROF_respawnSpectatorForceInterface",PROF_respawnSpectatorForceInterface,false],
+	["PROF_respawnSpectatorHideBody",PROF_respawnSpectatorHideBody,true],
+	["PROF_respawnSpectatorTime",PROF_respawnSpectatorTime,30],
 	//wave respawns
-	["TAS_waveRespawn",TAS_waveRespawn,false],
-	["TAS_waveTime",TAS_waveTime,300],
+	["PROF_waveRespawn",PROF_waveRespawn,false],
+	["PROF_waveTime",PROF_waveTime,300],
 	//respawn in vehicle
-	["TAS_respawnInVehicle",TAS_respawnInVehicle,false],
+	["PROF_respawnInVehicle",PROF_respawnInVehicle,false],
 	//flagpole respawn
-	["TAS_flagpoleRespawn",TAS_flagpoleRespawn,false],
+	["PROF_flagpoleRespawn",PROF_flagpoleRespawn,false],
 	//fob system main
-	["TAS_fobEnabled",TAS_fobEnabled,false],
-	["TAS_fobPackup",TAS_fobPackup,false],
-	["TAS_fobFullArsenals",TAS_fobFullArsenals,false],
-	["TAS_fobDistance",300],
-	["TAS_fobRespawn",TAS_fobRespawn,false],
+	["PROF_fobEnabled",PROF_fobEnabled,false],
+	["PROF_fobPackup",PROF_fobPackup,false],
+	["PROF_fobFullArsenals",PROF_fobFullArsenals,false],
+	["PROF_fobDistance",300],
+	["PROF_fobRespawn",PROF_fobRespawn,false],
 	//fob overrun
-	["TAS_fobOverrun",TAS_fobOverrun,false],
-	["TAS_fobOverrunDestroy",TAS_fobOverrunDestroy,true],
-	["TAS_fobOVerrunFactor",TAS_fobOVerrunFactor,2],
-	["TAS_fobOverrunMinEnemy",TAS_fobOverrunMinEnemy,8],
-	["TAS_fobOverrunTimer",TAS_fobOverrunTimer,300],
-	["TAS_fobOverrunInterval",TAS_fobOverrunInterval,30],
+	["PROF_fobOverrun",PROF_fobOverrun,false],
+	["PROF_fobOverrunDestroy",PROF_fobOverrunDestroy,true],
+	["PROF_fobOVerrunFactor",PROF_fobOVerrunFactor,2],
+	["PROF_fobOverrunMinEnemy",PROF_fobOverrunMinEnemy,8],
+	["PROF_fobOverrunTimer",PROF_fobOverrunTimer,300],
+	["PROF_fobOverrunInterval",PROF_fobOverrunInterval,30],
 	//rallypoints main
-	["TAS_rallypointsEnabled",TAS_rallypointsEnabled,false],
-	["TAS_useSmallRally",TAS_useSmallRally,true],
-	["TAS_rallyDistance",TAS_rallyDistance,150],
-	["TAS_rallyOutnumber",TAS_rallyOutnumber,true],
+	["PROF_rallypointsEnabled",PROF_rallypointsEnabled,false],
+	["PROF_useSmallRally",PROF_useSmallRally,true],
+	["PROF_rallyDistance",PROF_rallyDistance,150],
+	["PROF_rallyOutnumber",PROF_rallyOutnumber,true],
 	//rallypoint overrun
-	["TAS_rallypointOverrun",TAS_rallypointOverrun,false],
-	["TAS_rallyOutnumberFactor",TAS_rallyOutnumberFactor,2],
-	["TAS_rallyOverrunMinEnemy",TAS_rallyOverrunMinEnemy,4],
-	["TAS_rallyOverrunTimer",TAS_rallyOverrunTimer,90],
-	["TAS_rallyOverrunInterval",TAS_rallyOverrunInterval,15],
+	["PROF_rallypointOverrun",PROF_rallypointOverrun,false],
+	["PROF_rallyOutnumberFactor",PROF_rallyOutnumberFactor,2],
+	["PROF_rallyOverrunMinEnemy",PROF_rallyOverrunMinEnemy,4],
+	["PROF_rallyOverrunTimer",PROF_rallyOverrunTimer,90],
+	["PROF_rallyOverrunInterval",PROF_rallyOverrunInterval,15],
 	//////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////Advanced Options///////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////
 	////Scripts/Functions Options/////
 	//////////////////////////////////
-	["TAS_aceHealObjectEnabled",TAS_aceHealObjectEnabled,true],
-	["TAS_aceSpectateObjectEnabled",TAS_aceSpectateObjectEnabled,true],
+	["PROF_aceHealObjectEnabled",PROF_aceHealObjectEnabled,true],
+	["PROF_aceSpectateObjectEnabled",PROF_aceSpectateObjectEnabled,true],
 	//////////////////////////////////
 	//////////Misc Options////////////
 	//////////////////////////////////
 	//boss options
-	["TAS_bossEnabled",TAS_bossEnabled,true],
-	["TAS_bossImagePath",TAS_bossImagePath,"media/logo256x256.paa"],
-	//["TAS_bossParts",TAS_bossParts,[[leg1,"LeftLeg",10],[leg2,"RightLeg",10],[torso,"Torso",30],[head,"Head",20]]], //not checked due to 'leg1' and etc being ANY if not defined and thus not matching
-	["TAS_bossInterval",TAS_bossInterval,0.5],
-	["TAS_bossHealthModifier",TAS_bossHealthModifier,1],
+	["PROF_bossEnabled",PROF_bossEnabled,true],
+	["PROF_bossImagePath",PROF_bossImagePath,"media/logo256x256.paa"],
+	//["PROF_bossParts",PROF_bossParts,[[leg1,"LeftLeg",10],[leg2,"RightLeg",10],[torso,"Torso",30],[head,"Head",20]]], //not checked due to 'leg1' and etc being ANY if not defined and thus not matching
+	["PROF_bossInterval",PROF_bossInterval,0.5],
+	["PROF_bossHealthModifier",PROF_bossHealthModifier,1],
 	//VASS options
-	["TAS_vassEnabled",TAS_vassEnabled,false],
-	["TAS_vassShopSystemVariable",TAS_vassShopSystemVariable,"TAS_exampleVassMoney"],
-	["TAS_vassShopSystemLoadoutVariable",TAS_vassShopSystemLoadoutVariable,"TAS_exampleVassLoadout"],
-	["TAS_vassDefaultBalance",TAS_vassDefaultBalance,700],
-	["TAS_vassBonusStartingMoney",TAS_vassBonusStartingMoney,0],
-	["TAS_vassPrebriefing",TAS_vassPrebriefing,["In this campaign, we have to buy our gear from the black market.","Each player's balance and loadout at mission end will carry over to the next mission.","All free items (cosmetics) are in the red crate's ace arsenal, everything else is in the other box.","Save your loadout at the sign to be able to rebuy it in the future for a small cost."]],
-	["TAS_vassShops",TAS_vassShops,["arsenal_1","arsenal_2"]],
-	["TAS_vassSigns",TAS_vassSigns,["AceHealObject"]],
-	["TAS_rebuyCostPrimary",TAS_rebuyCostPrimary,35],
-	["TAS_rebuyCostSecondary",TAS_rebuyCostSecondary,50],
-	["TAS_rebuyCostHandgun",TAS_rebuyCostHandgun,15],
+	["PROF_vassEnabled",PROF_vassEnabled,false],
+	["PROF_vassShopSystemVariable",PROF_vassShopSystemVariable,"PROF_exampleVassMoney"],
+	["PROF_vassShopSystemLoadoutVariable",PROF_vassShopSystemLoadoutVariable,"PROF_exampleVassLoadout"],
+	["PROF_vassDefaultBalance",PROF_vassDefaultBalance,700],
+	["PROF_vassBonusStartingMoney",PROF_vassBonusStartingMoney,0],
+	["PROF_vassPrebriefing",PROF_vassPrebriefing,["In this campaign, we have to buy our gear from the black market.","Each player's balance and loadout at mission end will carry over to the next mission.","All free items (cosmetics) are in the red crate's ace arsenal, everything else is in the other box.","Save your loadout at the sign to be able to rebuy it in the future for a small cost."]],
+	["PROF_vassShops",PROF_vassShops,["arsenal_1","arsenal_2"]],
+	["PROF_vassSigns",PROF_vassSigns,["AceHealObject"]],
+	["PROF_rebuyCostPrimary",PROF_rebuyCostPrimary,35],
+	["PROF_rebuyCostSecondary",PROF_rebuyCostSecondary,50],
+	["PROF_rebuyCostHandgun",PROF_rebuyCostHandgun,15],
 	//other assorted stuff 
-	["TAS_vanillaStaminaDisabled",TAS_vanillaStaminaDisabled,true],
-	["TAS_doAimCoefChange",TAS_doAimCoefChange,false],
-	["TAS_aimCoef",TAS_aimCoef,0.5],
-	["TAS_recoilCoef",TAS_recoilCoef,0.75],
-	["TAS_ctabEnabled",TAS_ctabEnabled,false],
+	["PROF_vanillaStaminaDisabled",PROF_vanillaStaminaDisabled,true],
+	["PROF_doAimCoefChange",PROF_doAimCoefChange,false],
+	["PROF_aimCoef",PROF_aimCoef,0.5],
+	["PROF_recoilCoef",PROF_recoilCoef,0.75],
+	["PROF_ctabEnabled",PROF_ctabEnabled,false],
 	//////////////////////////////////
 	////////Template Options//////////
 	//////////////////////////////////
 	//skip version and briefing
-	["TAS_cleanBriefing",TAS_cleanBriefing,true],
+	["PROF_cleanBriefing",PROF_cleanBriefing,true],
 	//////////////////////////////////
 	////////Scripts Options///////////
 	//////////////////////////////////
-	["TAS_spawnUnitsOnHC",TAS_spawnUnitsOnHC,false],
-	["TAS_globalTfarEnabled",TAS_globalTfarEnabled,true],
-	["TAS_dynamicGroupsEnabled",TAS_dynamicGroupsEnabled,true],
-	["TAS_fpsDisplayEnabled",TAS_fpsDisplayEnabled,true],
-	["TAS_fixDeathColor",TAS_fixDeathColor,true],
-	["TAS_trimGroupNames",TAS_trimGroupNames,true],
+	["PROF_spawnUnitsOnHC",PROF_spawnUnitsOnHC,false],
+	["PROF_globalTfarEnabled",PROF_globalTfarEnabled,true],
+	["PROF_dynamicGroupsEnabled",PROF_dynamicGroupsEnabled,true],
+	["PROF_fpsDisplayEnabled",PROF_fpsDisplayEnabled,true],
+	["PROF_fixDeathColor",PROF_fixDeathColor,true],
+	["PROF_trimGroupNames",PROF_trimGroupNames,true],
 	//////////////////////////////////
 	///////Logistics Options//////////
 	//////////////////////////////////
-	//["TAS_kpCratefiller",TAS_kpCratefiller,true],
+	//["PROF_kpCratefiller",PROF_kpCratefiller,true],
 	//////////////////////////////////
 	//////////Zeus Options////////////
 	//////////////////////////////////
-	["TAS_zeusResupply",TAS_zeusResupply,true],
-	["TAS_zeusInfoText",TAS_zeusInfoText,true],
-	["TAS_zeusHcTransfer",TAS_zeusHcTransfer,true],
-	["TAS_zeusActionDebug",TAS_zeusActionDebug,true],
-	["TAS_zeusSpectateManager",TAS_zeusSpectateManager,true],
-	["TAS_zeusGroupDeletion",TAS_zeusGroupDeletion,true],
-	["TAS_zeusFollowMarker",TAS_zeusFollowMarker,true],
-	["TAS_zeusServiceVehicle",TAS_zeusServiceVehicle,true],
+	["PROF_zeusResupply",PROF_zeusResupply,true],
+	["PROF_zeusInfoText",PROF_zeusInfoText,true],
+	["PROF_zeusHcTransfer",PROF_zeusHcTransfer,true],
+	["PROF_zeusActionDebug",PROF_zeusActionDebug,true],
+	["PROF_zeusSpectateManager",PROF_zeusSpectateManager,true],
+	["PROF_zeusGroupDeletion",PROF_zeusGroupDeletion,true],
+	["PROF_zeusFollowMarker",PROF_zeusFollowMarker,true],
+	["PROF_zeusServiceVehicle",PROF_zeusServiceVehicle,true],
 	//////////////////////////////////
 	//Client Hotkeys/Actions Options//
 	//////////////////////////////////
-	["TAS_aceWindowBreak",TAS_aceWindowBreak,false],
-	["TAS_afkEnabled",TAS_afkEnabled,true],
-	["TAS_earplugsEnabled",TAS_earplugsEnabled,true],
-	["TAS_earplugVolume",TAS_earplugVolume,0.25],
-	["TAS_musicKeyEnabled",TAS_musicKeyEnabled,true],
+	["PROF_aceWindowBreak",PROF_aceWindowBreak,false],
+	["PROF_afkEnabled",PROF_afkEnabled,true],
+	["PROF_earplugsEnabled",PROF_earplugsEnabled,true],
+	["PROF_earplugVolume",PROF_earplugVolume,0.25],
+	["PROF_musicKeyEnabled",PROF_musicKeyEnabled,true],
 	//////////////////////////////////
 	//////////Admin Options///////////
 	//////////////////////////////////
-	["TAS_ModLog",TAS_ModLog,true],
-	["TAS_ModLogShame",TAS_ModLogShame,true],
-	["TAS_trackPeformance",TAS_trackPeformance,true],
-	["TAS_doDiscordUpdate",TAS_doDiscordUpdate,true],
-	["TAS_discordUpdateDelay",TAS_discordUpdateDelay,30]
+	["PROF_ModLog",PROF_ModLog,true],
+	["PROF_ModLogShame",PROF_ModLogShame,true],
+	["PROF_trackPeformance",PROF_trackPeformance,true],
+	["PROF_doDiscordUpdate",PROF_doDiscordUpdate,true],
+	["PROF_discordUpdateDelay",PROF_discordUpdateDelay,30]
 ]; //2D array of ALL config parameters and their default values
 
 
@@ -331,7 +331,7 @@ hint "Results of automated reviewer copied to clipboard!";
 systemChat "Results of automated reviewer copied to clipboard!";
 
 /* example results for template
-Mission name: tas_missiontemplate_8mansquads, Map: vr, Mission Template Version: 10.1
+Mission name: PROF_missiontemplate_8mansquads, Map: vr, Mission Template Version: 10.1
 Mission time: 13:37. Time acceleration: 1
 Total number of groups: 35, wherein 0 will be automatically deleted when empty.
 Total number of units: 13, wherein 0 are dead on mission start and 0 are agents.

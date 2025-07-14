@@ -16,8 +16,8 @@
 if (hasInterface) then {
 
     sleep 1;    //postInit should make this redundant but just in case
-    if (!TAS_kpCratefiller) exitWith { diag_log "TAS MISSION TEMPLATE: KP Crate Filler Disabled" };
-    player createDiaryRecord ["tasMissionTemplate", ["KP Crate Filler", "Enabled."]];
+    if (!PROF_kpCratefiller) exitWith { diag_log "PROF MISSION TEMPLATE: KP Crate Filler Disabled" };
+    player createDiaryRecord ["PROFMissionTemplate", ["KP Crate Filler", "Enabled."]];
 
     // Read the config file
     [] call compile preprocessFileLineNumbers "KPCF_config.sqf";

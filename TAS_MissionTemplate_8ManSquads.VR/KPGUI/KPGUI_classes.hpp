@@ -640,13 +640,13 @@ class KPGUI_PRE_MapControl {
         coefMin = 1;
         coefMax = 1;
     };
-    class Task {
-        taskNone = "#(argb,8,8,3)color(0,0,0,0)";
-        taskCreated = "#(argb,8,8,3)color(0,0,0,1)";
-        taskAssigned = "#(argb,8,8,3)color(1,1,1,1)";
-        taskSucceeded = "#(argb,8,8,3)color(0,1,0,1)";
-        taskFailed = "#(argb,8,8,3)color(1,0,0,1)";
-        taskCanceled = "#(argb,8,8,3)color(1,0.5,0,1)";
+    class PROFk {
+        PROFkNone = "#(argb,8,8,3)color(0,0,0,0)";
+        PROFkCreated = "#(argb,8,8,3)color(0,0,0,1)";
+        PROFkAssigned = "#(argb,8,8,3)color(1,1,1,1)";
+        PROFkSucceeded = "#(argb,8,8,3)color(0,1,0,1)";
+        PROFkFailed = "#(argb,8,8,3)color(1,0,0,1)";
+        PROFkCanceled = "#(argb,8,8,3)color(1,0.5,0,1)";
         colorCreated[] = {1, 1, 1, 1};
         colorCanceled[] = {0.7, 0.7, 0.7, 1};
         colorDone[] = {0.7, 1, 0.3, 1};
@@ -657,11 +657,11 @@ class KPGUI_PRE_MapControl {
             "(profilenamespace getvariable ['IGUI_TEXT_RGB_B',1])",
             "(profilenamespace getvariable ['IGUI_TEXT_RGB_A',0.8])"
         };
-        icon = "\A3\ui_f\data\map\mapcontrol\taskIcon_CA.paa";
-        iconCreated = "\A3\ui_f\data\map\mapcontrol\taskIconCreated_CA.paa";
-        iconCanceled = "\A3\ui_f\data\map\mapcontrol\taskIconCanceled_CA.paa";
-        iconDone = "\A3\ui_f\data\map\mapcontrol\taskIconDone_CA.paa";
-        iconFailed = "\A3\ui_f\data\map\mapcontrol\taskIconFailed_CA.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\PROFkIcon_CA.paa";
+        iconCreated = "\A3\ui_f\data\map\mapcontrol\PROFkIconCreated_CA.paa";
+        iconCanceled = "\A3\ui_f\data\map\mapcontrol\PROFkIconCanceled_CA.paa";
+        iconDone = "\A3\ui_f\data\map\mapcontrol\PROFkIconDone_CA.paa";
+        iconFailed = "\A3\ui_f\data\map\mapcontrol\PROFkIconFailed_CA.paa";
         size = 27;
         importance = 1;
         coefMin = 1;

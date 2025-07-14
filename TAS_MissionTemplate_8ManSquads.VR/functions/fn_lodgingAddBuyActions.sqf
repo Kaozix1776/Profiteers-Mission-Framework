@@ -1,10 +1,10 @@
 // Adds the various lodging buy actions to the buy object
-// Uses store data in TAS_lodgingBuyOptions as default
-// [AceHealObject] call TAS_fnc_lodgingAddBuyActions;
+// Uses store data in PROF_lodgingBuyOptions as default
+// [AceHealObject] call PROF_fnc_lodgingAddBuyActions;
 
-params ["_actionObject",["_itemsArray",TAS_lodgingBuyOptions],["_debug",true]]; // _itemsArray = [[item1classname,cost,prettyName],[item2classname,cost,prettyName]]
+params ["_actionObject",["_itemsArray",PROF_lodgingBuyOptions],["_debug",true]]; // _itemsArray = [[item1classname,cost,prettyName],[item2classname,cost,prettyName]]
 
-if (_debug) then { [format ["TAS_lodgingAddBuyActions: Adding actions to object %1 for shop data %2!",_actionObject,_itemsArray]] call TAS_fnc_error; };
+if (_debug) then { [format ["PROF_lodgingAddBuyActions: Adding actions to object %1 for shop data %2!",_actionObject,_itemsArray]] call PROF_fnc_error; };
 
 {
 	params ["_itemClassname","_cost","_name"];
@@ -18,7 +18,7 @@ if (_debug) then { [format ["TAS_lodgingAddBuyActions: Adding actions to object 
 		{},													// Code executed when action starts
 		{},													// Code executed on every progress tick
 		{
-			_x call TAS_fnc_lodgingBuyItem;
+			_x call PROF_fnc_lodgingBuyItem;
 		},												// Code executed on completion
 		{},													// Code executed on interrupted
 		[],													// Arguments passed to the scripts as _this select 3
@@ -29,4 +29,4 @@ if (_debug) then { [format ["TAS_lodgingAddBuyActions: Adding actions to object 
 	] call BIS_fnc_holdActionAdd;
 } forEach _itemsArray;
 
-if (_debug) then { [format ["TAS_lodgingAddBuyActions: Finished adding actions!"]] call TAS_fnc_error; };
+if (_debug) then { [format ["PROF_lodgingAddBuyActions: Finished adding actions!"]] call PROF_fnc_error; };

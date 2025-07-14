@@ -18,7 +18,7 @@ private _onConfirm =
 	
 	{
 		private _side = _x;
-		{ if (side _x == _side) then { [_x] remoteExec ["TAS_fnc_punishCivKillerServer",_x] } } forEach allUnits;
+		{ if (side _x == _side) then { [_x] remoteExec ["PROF_fnc_punishCivKillerServer",_x] } } forEach allUnits;
 	} forEach _sides;
 
 	systemChat "Units have been added to protected list!";

@@ -4,7 +4,7 @@
 /*
 Plays the given video file in the corner (top right?) of the player's screen. Tested for 16:9 aspect resolution.
 Execute locally on each client.
-if (isServer) then { ["path\to\video.ogv"] remoteExec ["TAS_fnc_playCornerVideo"] };
+if (isServer) then { ["path\to\video.ogv"] remoteExec ["PROF_fnc_playCornerVideo"] };
 */
 
 #include "\a3\ui_f\hpp\definecommongrids.inc"

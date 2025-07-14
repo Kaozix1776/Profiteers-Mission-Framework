@@ -2,7 +2,7 @@ params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
 if (isNull _unit) exitWith {
 	systemChat "Error: place the follow marker zeus module on the object that you wish to attach the marker to!";
-	diag_log "TAS MISSION TEMPLATE: fn_zeusMarkerFollow was executed without being placed on an object!";
+	diag_log "PROF MISSION TEMPLATE: fn_zeusMarkerFollow was executed without being placed on an object!";
 };
 
 //ZEN dialog
@@ -20,7 +20,7 @@ private _onConfirm =
 	//Get in params again
 	_in params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
-	[_unit,_markerType,_markerColor,_markerName,_deleteOnDeath,_interval] remoteExec ["TAS_fnc_markerFollow",2];
+	[_unit,_markerType,_markerColor,_markerName,_deleteOnDeath,_interval] remoteExec ["PROF_fnc_markerFollow",2];
 
 };
 

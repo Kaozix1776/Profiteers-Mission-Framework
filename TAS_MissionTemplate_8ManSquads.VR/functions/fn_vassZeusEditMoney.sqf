@@ -21,30 +21,30 @@ private _onConfirm =
 	if (_applyToAllPlayers) then {
 		[[_moneyChange,_doChangeRelative],{
 			params ["_moneyChange","_doChangeRelative"];
-			private _tasOldMoney = profileNamespace getVariable TAS_vassShopSystemVariable;
-			private _tasNewMoney = 0;
+			private _PROFOldMoney = profileNamespace getVariable PROF_vassShopSystemVariable;
+			private _PROFNewMoney = 0;
 			if (_doChangeRelative) then {
-				_tasNewMoney = _tasOldMoney + _moneyChange;
-				hint format ["You now have %1$ in cash due to a Zeus setting your balance!",_tasNewMoney];
+				_PROFNewMoney = _PROFOldMoney + _moneyChange;
+				hint format ["You now have %1$ in cash due to a Zeus setting your balance!",_PROFNewMoney];
 			} else { //absolute change
-				_tasNewMoney = _moneyChange;
-				hint format ["You now have %1$ in cash due to a Zeus editing your previous balance by %2!",_tasNewMoney,_moneyChange];
+				_PROFNewMoney = _moneyChange;
+				hint format ["You now have %1$ in cash due to a Zeus editing your previous balance by %2!",_PROFNewMoney,_moneyChange];
 			};
-			profileNamespace setVariable [TAS_vassShopSystemVariable,_tasNewMoney];
+			profileNamespace setVariable [PROF_vassShopSystemVariable,_PROFNewMoney];
 		}] remoteExec ["spawn"]; //TODO everywhere except on the server unless server is a player
 	} else {
 		[[_moneyChange,_doChangeRelative],{
 			params ["_moneyChange","_doChangeRelative"];
-			private _tasOldMoney = profileNamespace getVariable TAS_vassShopSystemVariable;
-			private _tasNewMoney = 0;
+			private _PROFOldMoney = profileNamespace getVariable PROF_vassShopSystemVariable;
+			private _PROFNewMoney = 0;
 			if (_doChangeRelative) then {
-				_tasNewMoney = _tasOldMoney + _moneyChange;
-				hint format ["You now have %1$ in cash due to a Zeus setting your balance!",_tasNewMoney];
+				_PROFNewMoney = _PROFOldMoney + _moneyChange;
+				hint format ["You now have %1$ in cash due to a Zeus setting your balance!",_PROFNewMoney];
 			} else { //absolute change
-				_tasNewMoney = _moneyChange;
-				hint format ["You now have %1$ in cash due to a Zeus editing your previous balance by %2!",_tasNewMoney,_moneyChange];
+				_PROFNewMoney = _moneyChange;
+				hint format ["You now have %1$ in cash due to a Zeus editing your previous balance by %2!",_PROFNewMoney,_moneyChange];
 			};
-			profileNamespace setVariable [TAS_vassShopSystemVariable,_tasNewMoney];
+			profileNamespace setVariable [PROF_vassShopSystemVariable,_PROFNewMoney];
 		}] remoteExec ["spawn",_unit];
 	};
 };

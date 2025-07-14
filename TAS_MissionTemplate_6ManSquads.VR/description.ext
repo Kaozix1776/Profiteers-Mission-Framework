@@ -12,12 +12,12 @@ class CfgDebriefingSections {
 };
 
 class ACEX_Fortify_Presets {
-    class TAS_Fortify_Objects {
-		displayName = "TAS Fortify Objects";
+    class PROF_Fortify_Objects {
+		displayName = "PROF Fortify Objects";
         objects[] = {
             //To add new items, copy the line two lines below, remove the comment slash marks, and replace classname and cost as needed
 			//Change 5 to whatever cost you want for the object
-			//You will also need to place the fortify module in Eden, set it to the "TAS_Fortify_Objects" preset
+			//You will also need to place the fortify module in Eden, set it to the "PROF_Fortify_Objects" preset
 			//{"Insert Object Classname Here", 5},
             {"Land_Plank_01_4m_F", 5},
             {"Land_Plank_01_8m_F", 10} //last entry do not include a comma at the end
@@ -36,14 +36,14 @@ class CfgMusic
 		name = "Example Sound 1";
 		sound[] = {"media\ExampleSound1.ogg", db+1, 1.0};
 		titles[] = {0,""};
-		musicClass = "TASMusicClass"; //needs the TAS addon to work, adds it to zeus (probably)
+		musicClass = "PROFMusicClass"; //needs the PROF addon to work, adds it to zeus (probably)
 	};
 	class 02
 	{
 		name = "Example Sound 2";
 		sound[] = {"media\ExampleSound2.ogg", db+1, 1.0};
 		titles[] = {0,""};
-		musicClass = "TASMusicClass";
+		musicClass = "PROFMusicClass";
 	};
 };
 
@@ -54,7 +54,7 @@ class Extended_Init_EventHandlers
     class CAManBase
     {
         class PunishCivKiller {
-            init = "if (side (_this select 0) == civilian) then {_this call TAS_fnc_punishCivKillerServer};"; //[_unit]
+            init = "if (side (_this select 0) == civilian) then {_this call PROF_fnc_punishCivKillerServer};"; //[_unit]
         };
     };
 };
@@ -73,7 +73,7 @@ allowFunctionsRecompile = 1; //VASS requires always enabled
 
 class CfgFunctions
 {
-	class TAS //tag, so TAG_fnc_functionName
+	class PROF //tag, so TAG_fnc_functionName
 	{
 		class init
 		{

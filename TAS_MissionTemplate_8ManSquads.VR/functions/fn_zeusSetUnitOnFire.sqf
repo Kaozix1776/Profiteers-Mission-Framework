@@ -4,7 +4,7 @@ params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 if (isNull _unit) then {
 	systemChat "Module was not placed on a unit, will use the module's position as the centerpoint for a radius burn instead!"
 	//systemChat "Error: place the fire zeus module on the unit you wish to set on fire!!";
-	//diag_log "TAS MISSION TEMPLATE: fn_zeusSetUnitOnFire was executed without being placed on an object!";
+	//diag_log "PROF MISSION TEMPLATE: fn_zeusSetUnitOnFire was executed without being placed on an object!";
 };
 
 //ZEN dialog
@@ -20,7 +20,7 @@ private _onConfirm =
 	//Get in params again
 	_in params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 	
-	[_pos,_unit,_intensity,_radius,_doScale] call TAS_fnc_burnUnitOrArea;
+	[_pos,_unit,_intensity,_radius,_doScale] call PROF_fnc_burnUnitOrArea;
 };
 
 [

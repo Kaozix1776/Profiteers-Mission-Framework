@@ -2,12 +2,12 @@ params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
 if (isNull _unit) exitWith {
 	systemChat "Error: place the mark unit zeus module on the object that you wish to attach the mark to!";
-	diag_log "TAS MISSION TEMPLATE: fn_zeusMarkUnit was executed without being placed on an object!";
+	diag_log "PROF MISSION TEMPLATE: fn_zeusMarkUnit was executed without being placed on an object!";
 };
 
 if !(alive _unit) exitWith {
 	systemChat "Error: place the mark unit zeus module on an alive unit or vehicle!!";
-	diag_log "TAS MISSION TEMPLATE: fn_zeusMarkUnit was executed without being placed on an alive object!";
+	diag_log "PROF MISSION TEMPLATE: fn_zeusMarkUnit was executed without being placed on an alive object!";
 };
 
 //ZEN dialog
@@ -29,7 +29,7 @@ private _onConfirm =
 	/*if (_doSideEnemy) then {
 		_friendlySide = sideEnemy;
 	};*/ //Why even have this as an option? Zeus knows that they want it marked, just do sideEnemy as default
-	[_unit,sideEnemy,_doMarker,_do3dIcon,_name,_customColor,_deleteOnDeath] remoteExec ["TAS_fnc_markUnit",2];
+	[_unit,sideEnemy,_doMarker,_do3dIcon,_name,_customColor,_deleteOnDeath] remoteExec ["PROF_fnc_markUnit",2];
 
 };
 

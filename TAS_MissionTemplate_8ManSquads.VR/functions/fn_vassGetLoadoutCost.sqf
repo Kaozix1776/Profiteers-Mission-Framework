@@ -1,7 +1,7 @@
 // Loops through player's inventory, compares everything to 
 // Ideally, execute locally on player
-// [shopCrate] call TAS_fnc_vassGetLoadoutCost
-// [shop,player,true] call TAS_fnc_vassGetLoadoutCost
+// [shopCrate] call PROF_fnc_vassGetLoadoutCost
+// [shop,player,true] call PROF_fnc_vassGetLoadoutCost
 // Return value: Integer (cost of loadout)
 
 // Example input loadout data:
@@ -31,20 +31,20 @@ if (typeName _shop == "STRING") then {
     _shop = missionNamespace getVariable [_shop, objNull]; //convert from string to object, otherwise we get errors
 };
 
-[format ["TAS_fnc_vassGetLoadoutCostRecursive: Checking loadout of %1",_loadout]] call TAS_fnc_error;
+[format ["PROF_fnc_vassGetLoadoutCostRecursive: Checking loadout of %1",_loadout]] call PROF_fnc_error;
 
 {
     private _loadoutContainer = _x;
-    if (_debug) then { [format ["TAS_fnc_vassGetLoadoutCostRecursive: Checking loadout section of index %1 with value %2",_forEachIndex,_loadoutContainer]] call TAS_fnc_error; };
+    if (_debug) then { [format ["PROF_fnc_vassGetLoadoutCostRecursive: Checking loadout section of index %1 with value %2",_forEachIndex,_loadoutContainer]] call PROF_fnc_error; };
 
-    private _returnedCost = [_loadoutContainer,_shop] call TAS_fnc_vassGetLoadoutCostRecursive;
+    private _returnedCost = [_loadoutContainer,_shop] call PROF_fnc_vassGetLoadoutCostRecursive;
     _cost = _cost + _returnedCost;
 
-    if (_debug) then { [format ["TAS_fnc_vassGetLoadoutCostRecursive: Loadout section costed %1 for a total cost of %2",_returnedCost,_cost]] call TAS_fnc_error; };
+    if (_debug) then { [format ["PROF_fnc_vassGetLoadoutCostRecursive: Loadout section costed %1 for a total cost of %2",_returnedCost,_cost]] call PROF_fnc_error; };
 } foreach _loadout;
 
-[format ["TAS_fnc_vassGetLoadoutCostRecursive: Total loadout cost: %1",_cost]] call TAS_fnc_error;
+[format ["PROF_fnc_vassGetLoadoutCostRecursive: Total loadout cost: %1",_cost]] call PROF_fnc_error;
 
-//_unit setVariable ["TAS_playerRebuyCost",_rebuyCost]; //TODO save under player object or profileNamespace?
+//_unit setVariable ["PROF_playerRebuyCost",_rebuyCost]; //TODO save under player object or profileNamespace?
 
 _cost

@@ -25,7 +25,7 @@ private _onConfirm =
 		systemChat "Place the module on an object, not a vehicle!";
 	};
 
-	[_object,_name] remoteExec ["TAS_fnc_assignRespawnFlagpoleInit",2]; //exec on server
+	[_object,_name] remoteExec ["PROF_fnc_assignRespawnFlagpoleInit",2]; //exec on server
 };
 [
 	"Set Respawn Position Name", 
@@ -38,7 +38,7 @@ private _onConfirm =
 ] call zen_dialog_fnc_create;
 
 /*[_object,_name] spawn { //create marker and update it on vehicle every minute while it's alive
-	private _marker = createMarkerLocal [format ["TAS_respawnVehicleMarker_%1",_name], position gangFourLeader]; //change for correct gang
+	private _marker = createMarkerLocal [format ["PROF_respawnVehicleMarker_%1",_name], position gangFourLeader]; //change for correct gang
 	_marker setMarkerType "mil_flag_noShadow";
 	_marker setMarkerColor "ColorUNKNOWN"; //TODO change based on player side?
 	_marker setMarkerText _name; //change for correct gang

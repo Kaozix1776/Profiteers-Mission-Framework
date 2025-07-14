@@ -7,7 +7,7 @@
 //_nearEnemies = player countEnemy _nearEntities;
 private _friendlySide 			= side group player;
 private _enemySides 			= [_friendlySide] call BIS_fnc_enemySides;
-private _radius 				= TAS_rallyDistance; //parameter from initServer.sqf, default 150
+private _radius 				= PROF_rallyDistance; //parameter from initServer.sqf, default 150
 private _nearUnits = allUnits select { _x distance player < _radius };
 private _nearEnemies = _nearUnits select {alive _x && { side _x in _enemySides && { !(_x getVariable ["ACE_isUnconscious",false]) } } };
 private _nearEnemiesNumber = count _nearEnemies;
@@ -16,25 +16,25 @@ private _nearFriendliesNumber = count _nearFriendlies;
 private _rallypointPosATL 		= getPosAtl player;
 
 private _exit = false;
-if (TAS_rallyOutnumber) then {
-	if ( _nearEnemiesNumber > _nearFriendliesNumber) exitWith {_exit = true; systemChat format ["Rallypoint creation failure, enemies outnumber friendlies within %1m!",TAS_rallyDistance]};
+if (PROF_rallyOutnumber) then {
+	if ( _nearEnemiesNumber > _nearFriendliesNumber) exitWith {_exit = true; systemChat format ["Rallypoint creation failure, enemies outnumber friendlies within %1m!",PROF_rallyDistance]};
 } else {
-	if ( _nearEnemiesNumber > 0 ) exitWith {_exit = true; systemChat format ["Rallypoint creation failure, enemies are within %1m!",TAS_rallyDistance]};
+	if ( _nearEnemiesNumber > 0 ) exitWith {_exit = true; systemChat format ["Rallypoint creation failure, enemies are within %1m!",PROF_rallyDistance]};
 };
 if (_exit) exitWith {};
 
-if (TAS_rallyDeltaUsed == false) then { "rallypointDeltaMarker" setMarkerAlpha 1; };  //first time rally is created, set its marker to visible
-if (TAS_rallyDeltaUsed == true) then {
-	{deleteVehicle _x} forEach TAS_rallypointDelta;
-	//TAS_rallypointDeltaRespawn call BIS_fnc_removeRespawnPosition;
-	private _path = [TAS_respawnLocations, "Delta Rallypoint"] call BIS_fnc_findNestedElement;
+if (PROF_rallyDeltaUsed == false) then { "rallypointDeltaMarker" setMarkerAlpha 1; };  //first time rally is created, set its marker to visible
+if (PROF_rallyDeltaUsed == true) then {
+	{deleteVehicle _x} forEach PROF_rallypointDelta;
+	//PROF_rallypointDeltaRespawn call BIS_fnc_removeRespawnPosition;
+	private _path = [PROF_respawnLocations, "Delta Rallypoint"] call BIS_fnc_findNestedElement;
 	private _indexOfOldRallyPair = _path select 0;
-	TAS_respawnLocations deleteAt _indexOfOldRallyPair;
+	PROF_respawnLocations deleteAt _indexOfOldRallyPair;
 }; //if rallypoint already exists, delete it so the new one can be spawned
 
-//TAS_rallypointDeltaRespawn = [side player, getPos player, "Delta Rallypoint"] call BIS_fnc_addRespawnPosition; //not private so we can delete later
-TAS_respawnLocations pushBack [_rallypointPosATL,"Delta Rallypoint"];
-publicVariable "TAS_respawnLocations";
+//PROF_rallypointDeltaRespawn = [side player, getPos player, "Delta Rallypoint"] call BIS_fnc_addRespawnPosition; //not private so we can delete later
+PROF_respawnLocations pushBack [_rallypointPosATL,"Delta Rallypoint"];
+publicVariable "PROF_respawnLocations";
 "rallypointDeltaMarker" setMarkerPosLocal getPos player; //updates the rallypoint's position on map
 private _color = "Default";
 switch (_friendlySide) do {
@@ -47,21 +47,21 @@ switch (_friendlySide) do {
 "rallypointDeltaMarker" setMarkerColorLocal _color;	//last marker command is public
 "rallypointDeltaMarker" setMarkerText format ["%1 Rallypoint",groupId group player];
 
-if (TAS_useSmallRally == false) then {
-	TAS_rallypointDelta = [getPos player, getDir player, call (compile (preprocessFileLineNumbers "buildfob\rallypointComposition.sqf"))] call BIS_fnc_ObjectsMapper; //not private so we can delete later
+if (PROF_useSmallRally == false) then {
+	PROF_rallypointDelta = [getPos player, getDir player, call (compile (preprocessFileLineNumbers "buildfob\rallypointComposition.sqf"))] call BIS_fnc_ObjectsMapper; //not private so we can delete later
 } else {
-	TAS_rallypointDelta = [getPos player, getDir player, call (compile (preprocessFileLineNumbers "buildfob\rallypointSmallComposition.sqf"))] call BIS_fnc_ObjectsMapper;
+	PROF_rallypointDelta = [getPos player, getDir player, call (compile (preprocessFileLineNumbers "buildfob\rallypointSmallComposition.sqf"))] call BIS_fnc_ObjectsMapper;
 }; //spawn the rallypoint composition, size depends on mission params in initServer
 
 [player, format ["%1 Rallypoint established by %2 at gridref %3.", groupId group player, name player, mapGridPosition player]] remoteExec ["sideChat", _friendlySide]; //tell everyone on same side about it
 
-TAS_rallyDeltaUsed = true; //tell game that the squad's rally is used and so it must be deleted before being respawned
-publicVariable "TAS_rallyDeltaUsed"; //might be unneccessary since only 1 person can be SL so don't need public, just exist on SL's machine
-										//might also need TAS_rallypointDeltaRespawn and TAS_rallypointDelta to be public for functionality in case SL disconnects and is replaced
+PROF_rallyDeltaUsed = true; //tell game that the squad's rally is used and so it must be deleted before being respawned
+publicVariable "PROF_rallyDeltaUsed"; //might be unneccessary since only 1 person can be SL so don't need public, just exist on SL's machine
+										//might also need PROF_rallypointDeltaRespawn and PROF_rallypointDelta to be public for functionality in case SL disconnects and is replaced
 											//for now, keep local to current SL machine since it's an edge case and would use up much bandwidth to publicVariable
 
 //systemChat "0";
 
-if (TAS_rallypointOverrun) then {
-	[_friendlySide,_enemySides,_radius,_nearEnemies,_nearFriendlies,_nearEnemiesNumber,_nearFriendliesNumber,_rallypointPosATL] remoteExec ["TAS_fnc_DeltaRallyOverrun",2]; //run overrun on server to avoid issues with FPS or client disconnect
+if (PROF_rallypointOverrun) then {
+	[_friendlySide,_enemySides,_radius,_nearEnemies,_nearFriendlies,_nearEnemiesNumber,_nearFriendliesNumber,_rallypointPosATL] remoteExec ["PROF_fnc_DeltaRallyOverrun",2]; //run overrun on server to avoid issues with FPS or client disconnect
 };

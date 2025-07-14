@@ -5,22 +5,22 @@ if (_debug) then {
 };
 
 //disable vanilla stamina on respawn
-if (TAS_vanillaStaminaDisabled) then {
+if (PROF_vanillaStaminaDisabled) then {
 	player enableFatigue false;
 };
 
-if (TAS_doAimCoefChange) then {
-	player setCustomAimCoef TAS_aimCoef;
-	player setUnitRecoilCoefficient TAS_recoilCoef;
+if (PROF_doAimCoefChange) then {
+	player setCustomAimCoef PROF_aimCoef;
+	player setUnitRecoilCoefficient PROF_recoilCoef;
 };
 
-if (TAS_scavSystemEnabled) exitWith { //exit early since stuff beyond this is all loadout/reinsert stuff
-	[] spawn TAS_fnc_scavPlayerInit;
+if (PROF_scavSystemEnabled) exitWith { //exit early since stuff beyond this is all loadout/reinsert stuff
+	[] spawn PROF_fnc_scavPlayerInit;
 };
 
 //respawn with death gear
-if (TAS_respawnDeathGear) then {
-	private _loadout = player getVariable ["TAS_deathLoadout",[]]; //Load dead player's loadout. Use CBA instead of vanilla. BOOL is for refilling mags.
+if (PROF_respawnDeathGear) then {
+	private _loadout = player getVariable ["PROF_deathLoadout",[]]; //Load dead player's loadout. Use CBA instead of vanilla. BOOL is for refilling mags.
 	if (count _loadout == 0) then {
 		systemChat "Your saved loadout is empty and thus will not be applied!";
 	} else {
@@ -29,16 +29,16 @@ if (TAS_respawnDeathGear) then {
 };
 
 //fix death color
-if (TAS_fixDeathColor) then {
-	private _color = player getVariable ["TAS_deathFireteamColor",""];
+if (PROF_fixDeathColor) then {
+	private _color = player getVariable ["PROF_deathFireteamColor",""];
 	if ((_color != "") && (_color != "MAIN")) then {	//dont bother doing it if its invalid or default
 		player assignTeam _color;
 	};
 };
 
 //respawn with saved gear
-if (TAS_respawnArsenalGear) then {
-	private _loadout = player getVariable ["TAS_arsenalLoadout",[]]; //Load dead player's loadout. Use CBA instead of vanilla. BOOL is for refilling mags.
+if (PROF_respawnArsenalGear) then {
+	private _loadout = player getVariable ["PROF_arsenalLoadout",[]]; //Load dead player's loadout. Use CBA instead of vanilla. BOOL is for refilling mags.
 	if (count _loadout == 0) then {
 		systemChat "Your saved loadout is empty and thus will not be applied!";
 	} else {
@@ -48,13 +48,13 @@ if (TAS_respawnArsenalGear) then {
 	//systemChat "Respawn with Arsenal Loadout disabled.";
 };
 
-if (TAS_vassEnabled) then {
+if (PROF_vassEnabled) then {
 	//VASS
 	//load editor loadout (player can choose to rebuy old loadout elsewhere)
 	player setUnitLoadout (player getVariable ["editorLoadout",[]]);
 };
 
-player setVariable ["TAS_waitingForReinsert",true];
+player setVariable ["PROF_waitingForReinsert",true];
 private _automaticExitSpectator = true;
 private _allowReinsert = true;
 
@@ -62,7 +62,7 @@ if (_debug) then {
 	systemChat "onPlayerRespawn b";
 };
 
-if (TAS_respawnSpectator) then {
+if (PROF_respawnSpectator) then {
 
 
 	if (_debug) then {
@@ -70,19 +70,19 @@ if (TAS_respawnSpectator) then {
 	};
 
 	//setup and initial spectator
-	private _time = TAS_respawnSpectatorTime;
-	[TAS_respawnSpectator,TAS_respawnSpectatorForceInterface,TAS_respawnSpectatorHideBody] call ace_spectator_fnc_setSpectator;
+	private _time = PROF_respawnSpectatorTime;
+	[PROF_respawnSpectator,PROF_respawnSpectatorForceInterface,PROF_respawnSpectatorHideBody] call ace_spectator_fnc_setSpectator;
 
-	if (TAS_waveRespawn) then {
+	if (PROF_waveRespawn) then {
 		//wave respawns (timer is server side and is broadcast every 30 seconds)
-		if (TAS_respawnSpectatorForceInterface) then {
-			while { TAS_waveRemainingTime != 0 } do { //forced interface
+		if (PROF_respawnSpectatorForceInterface) then {
+			while { PROF_waveRemainingTime != 0 } do { //forced interface
 				hintSilent format ["You must wait for a wave respawn to occur before exiting spectator and reinserting.\n\nApproximate Time Remaining: %1", [((_time)/60)+.01,"HH:MM"] call BIS_fnc_timetostring];
 				sleep 5;
 			};
 			hintSilent "";
 		} else {
-			while { TAS_waveRemainingTime != 0 } do { //can exit spectator
+			while { PROF_waveRemainingTime != 0 } do { //can exit spectator
 				hintSilent format ["You must wait for a wave respawn to occur before exiting spectator and reinserting, either spectate or customize your loadout while you wait!\n\nPress the ESCAPE key to exit spectator and go to the arsenal box if desired.\n\nApproximate Time Remaining: %1", [((_time)/60)+.01,"HH:MM"] call BIS_fnc_timetostring];
 				sleep 5;
 			};
@@ -90,7 +90,7 @@ if (TAS_respawnSpectator) then {
 		};
 	} else {
 		if (_time == 0) then {
-			if (TAS_respawnSpectatorForceInterface) then {
+			if (PROF_respawnSpectatorForceInterface) then {
 				//stuck in spectator
 				hint "You have died and there is currently no plans for respawns to occur.\n\nThank you for playing!";
 				_automaticExitSpectator = false;
@@ -103,7 +103,7 @@ if (TAS_respawnSpectator) then {
 		} else {
 			//waiting timers
 			//non-wave respawns (timer operates locally)
-			if (TAS_respawnSpectatorForceInterface) then {
+			if (PROF_respawnSpectatorForceInterface) then {
 				hint format ["You must wait before exiting spectator and reinserting.\n\nTime Remaining: %1", [((_time)/60)+.01,"HH:MM"] call BIS_fnc_timetostring]; //have sound for the first hint
 				while { _time > 0 } do {
 					_time = _time - 1;  
@@ -134,10 +134,10 @@ if (TAS_respawnSpectator) then {
 };
 
 if (_allowReinsert) then {
-	if (player getVariable ["TAS_aceArsenalOpen",false]) then {
+	if (player getVariable ["PROF_aceArsenalOpen",false]) then {
 		hint "Please close any displays (such as Arsenal) before being shown the respawn GUI!";
 		systemChat "Please close any displays (such as Arsenal) before being shown the respawn GUI!"; //this too because while in arsenal, hints are hidden
-		waitUntil {sleep 0.25; !(player getVariable ["TAS_aceArsenalOpen",false])}; //wait until ace arsenal is exited to avoid gui errors
+		waitUntil {sleep 0.25; !(player getVariable ["PROF_aceArsenalOpen",false])}; //wait until ace arsenal is exited to avoid gui errors
 	};
 	if (vehicle player != player) then {
 		hint "Exit the vehicle before being shown the respawn GUI!";
@@ -145,8 +145,8 @@ if (_allowReinsert) then {
 		waitUntil {sleep 0.25; vehicle player == player}; //wait until ace arsenal is exited to avoid gui errors
 	};
 
-	player setVariable ["TAS_waitingForReinsert",false];
-	if (TAS_respawnInVehicle || TAS_fobEnabled || TAS_rallypointsEnabled || TAS_flagpoleRespawn) then { [] spawn TAS_fnc_openRespawnGui; };
+	player setVariable ["PROF_waitingForReinsert",false];
+	if (PROF_respawnInVehicle || PROF_fobEnabled || PROF_rallypointsEnabled || PROF_flagpoleRespawn) then { [] spawn PROF_fnc_openRespawnGui; };
 	//if respawn vehicle and fob aren't enabled, then nothing will happen (player will be left at the base they selected to respawn at)
 	//if you have a custom respawn method, add it below (make sure respawn vehicle and fob are disabled)
 		//change "spawn" to "call" above if you want the code below to run AFTER player is TPed to rally/fob/wherever

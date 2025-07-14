@@ -11,7 +11,7 @@ private _onConfirm =
 	//Get in params again
 	_in params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
-	remoteExecCall ["TAS_fnc_globalTfar", 2];
+	remoteExecCall ["PROF_fnc_globalTfar", 2];
 
 };
 

@@ -1,9 +1,9 @@
-//[this,"Left Leg"] spawn TAS_fnc_bossHandleDamage;
+//[this,"Left Leg"] spawn PROF_fnc_bossHandleDamage;
 //intended to be executed on server or where vehicle is local
 private _debug = false;
 
-if !(TAS_bossEnabled) exitWith {
-	diag_log "TAS MISSION TEMPLATE: attempted to handle boss health system without the boss system being enabled!";
+if !(PROF_bossEnabled) exitWith {
+	diag_log "PROF MISSION TEMPLATE: attempted to handle boss health system without the boss system being enabled!";
 	if (_debug) then {
 		systemChat format ["attempted to handle boss health system without the boss system being enabled!"];
 	};
@@ -12,49 +12,49 @@ if !(TAS_bossEnabled) exitWith {
 //setup
 params ["_object","_componentName","_inputHealth"];
 if !(local _object) exitWith {
-	diag_log "TAS MISSION TEMPLATE: bossHandleDamage target vehicle is not local!";
+	diag_log "PROF MISSION TEMPLATE: bossHandleDamage target vehicle is not local!";
 	//if (_debug) then {
 	systemChat format ["bossHandleDamage target vehicle is not local!"];
 	//};
 };
-private _varName = format ["TAS_%1",_componentName];
+private _varName = format ["PROF_%1",_componentName];
 
 /*private ["_health"];
 switch (_componentName) do
 {
-	case "RightFoot": 			{ _health = [(10 * TAS_bossHealthModifier),(10 * TAS_bossHealthModifier)]; }; //1st is current health, 2nd is default health
-	case "RightFootCritical": 	{ _health = [(5 * TAS_bossHealthModifier),(5 * TAS_bossHealthModifier)]; };
-	case "RightLeg": 			{ _health = [(10 * TAS_bossHealthModifier),(10 * TAS_bossHealthModifier)]; };
-	case "RightArm": 			{ _health = [(15 * TAS_bossHealthModifier),(15 * TAS_bossHealthModifier)]; };
-	case "Belly": 				{ _health = [(10 * TAS_bossHealthModifier),(10 * TAS_bossHealthModifier)]; };
-	case "Center": 				{ _health = [(10 * TAS_bossHealthModifier),(10 * TAS_bossHealthModifier)]; };
-	case "Radar": 				{ _health = [(20 * TAS_bossHealthModifier),(20 * TAS_bossHealthModifier)]; };
-	case "Gun": 				{ _health = [(20 * TAS_bossHealthModifier),(20 * TAS_bossHealthModifier)]; };
-	case "SecondaryTurret": 			{ _health = [(10 * TAS_bossHealthModifier),(10 * TAS_bossHealthModifier)]; };
-	case "LeftFoot": 			{ _health = [(10 * TAS_bossHealthModifier),(10 * TAS_bossHealthModifier)]; };
-	case "LeftFootCritical": 	{ _health = [(5 * TAS_bossHealthModifier),(5 * TAS_bossHealthModifier)]; };
-	case "LeftLeg": 			{ _health = [(10 * TAS_bossHealthModifier),(10 * TAS_bossHealthModifier)]; };
-	case "LeftArm": 			{ _health = [(15 * TAS_bossHealthModifier),(15 * TAS_bossHealthModifier)]; };
-	default 					{ _health = [(10 * TAS_bossHealthModifier),(10 * TAS_bossHealthModifier)]; if (_debug) then { systemChat format ["Boss component health not found, defaulting to (10 * TAS_bossHealthModifier)!"]; }; };
+	case "RightFoot": 			{ _health = [(10 * PROF_bossHealthModifier),(10 * PROF_bossHealthModifier)]; }; //1st is current health, 2nd is default health
+	case "RightFootCritical": 	{ _health = [(5 * PROF_bossHealthModifier),(5 * PROF_bossHealthModifier)]; };
+	case "RightLeg": 			{ _health = [(10 * PROF_bossHealthModifier),(10 * PROF_bossHealthModifier)]; };
+	case "RightArm": 			{ _health = [(15 * PROF_bossHealthModifier),(15 * PROF_bossHealthModifier)]; };
+	case "Belly": 				{ _health = [(10 * PROF_bossHealthModifier),(10 * PROF_bossHealthModifier)]; };
+	case "Center": 				{ _health = [(10 * PROF_bossHealthModifier),(10 * PROF_bossHealthModifier)]; };
+	case "Radar": 				{ _health = [(20 * PROF_bossHealthModifier),(20 * PROF_bossHealthModifier)]; };
+	case "Gun": 				{ _health = [(20 * PROF_bossHealthModifier),(20 * PROF_bossHealthModifier)]; };
+	case "SecondaryTurret": 			{ _health = [(10 * PROF_bossHealthModifier),(10 * PROF_bossHealthModifier)]; };
+	case "LeftFoot": 			{ _health = [(10 * PROF_bossHealthModifier),(10 * PROF_bossHealthModifier)]; };
+	case "LeftFootCritical": 	{ _health = [(5 * PROF_bossHealthModifier),(5 * PROF_bossHealthModifier)]; };
+	case "LeftLeg": 			{ _health = [(10 * PROF_bossHealthModifier),(10 * PROF_bossHealthModifier)]; };
+	case "LeftArm": 			{ _health = [(15 * PROF_bossHealthModifier),(15 * PROF_bossHealthModifier)]; };
+	default 					{ _health = [(10 * PROF_bossHealthModifier),(10 * PROF_bossHealthModifier)]; if (_debug) then { systemChat format ["Boss component health not found, defaulting to (10 * PROF_bossHealthModifier)!"]; }; };
 };*/
-private _health = [(_inputHealth * TAS_bossHealthModifier),(_inputHealth * TAS_bossHealthModifier)];
+private _health = [(_inputHealth * PROF_bossHealthModifier),(_inputHealth * PROF_bossHealthModifier)];
 
 
 //setup
-_object setVariable ["TAS_bossPartName",_componentName,true];
+_object setVariable ["PROF_bossPartName",_componentName,true];
 missionNamespace setVariable [_varName, _health, true];
 //_object AllowCrewInImmobile true;
 
 //add component name to variable array for displaying. create new array is array doesnt exist yet
-if !(isNil "TAS_bossComponents") then {
-	TAS_bossComponents pushBack _componentName;
+if !(isNil "PROF_bossComponents") then {
+	PROF_bossComponents pushBack _componentName;
 } else {
-	TAS_bossComponents = [_componentName];
+	PROF_bossComponents = [_componentName];
 	if (_debug) then {
-		systemChat format ["Boss health components array created! Current value: %1",TAS_bossComponents];
+		systemChat format ["Boss health components array created! Current value: %1",PROF_bossComponents];
 	};
 };
-publicVariable "TAS_bossComponents";
+publicVariable "PROF_bossComponents";
 
 //debug
 if (_debug) then {
@@ -64,8 +64,8 @@ if (_debug) then {
 //add event handler to process damage. Will only fire on pc where vehicle is local
 private _eventHandler = _object addEventHandler ["HandleDamage", {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint", "_directHit"];
-	private _componentName = _unit getVariable ["TAS_bossPartName","error: no component name"];
-	private _varName = format ["TAS_%1",_componentName];
+	private _componentName = _unit getVariable ["PROF_bossPartName","error: no component name"];
+	private _varName = format ["PROF_%1",_componentName];
 	private _debug = false;
 
 	//take hit value and subtract it from health pool

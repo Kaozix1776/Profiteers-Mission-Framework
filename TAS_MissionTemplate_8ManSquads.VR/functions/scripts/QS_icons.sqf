@@ -149,7 +149,7 @@ _QS_ST_iconTextFonts = [										// ARRAY (STRING). Icon Text Font. Only the un
 	//'PuristaBold'
 	//'PuristaLight'
 	//'puristaMedium'
-	//'PuristaSemibold'
+	//'PurisPROFemibold'
 	'TahomaB'
 ];
 _QS_ST_otherDisplays = TRUE;									// BOOL. TRUE to add Unit/Vehicle Icon support for UAV Terminal and Artillery Computer. Runs a separate script to handle these displays. Only works if  _QS_ST_map_enableUnitIcons = TRUE;

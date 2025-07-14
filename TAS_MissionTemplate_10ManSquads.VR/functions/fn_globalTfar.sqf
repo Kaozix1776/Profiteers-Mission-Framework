@@ -1,20 +1,20 @@
-//TAS_globalTFAR scruot by Guac
+//PROF_globalTFAR scruot by Guac
 //sets all players' short range radios' to alternate channel for zeus to broadcast on
 //call it a second time to undo the changes
 //defined as a script in initPlayerLocal.sqf
-//example: remoteExecCall ["TAS_fnc_globalTfar", 2]; //Executed only on the server
+//example: remoteExecCall ["PROF_fnc_globalTfar", 2]; //Executed only on the server
 //rewrite as remoteExec here?
 
 //diary entry and fail message in initPlayerLocal
 
-if !(isServer) exitWith { diag_log format ["Exiting TAS_fnc_globalTFAR: only server can run this function!"]; }; //only server should run this due to remoteExecs
+if !(isServer) exitWith { diag_log format ["Exiting PROF_fnc_globalTFAR: only server can run this function!"]; }; //only server should run this due to remoteExecs
 
 private _headlessClients = entities "HeadlessClient_F";
 private _humanPlayers = allPlayers - _headlessClients;
 
 //setup variable if not previously made. Default to false
 private _playerRadiosAreGlobal = missionNamespace getVariable ["playersRadioGlobal", false];
-diag_log format ["Running TAS_globalTfar on server. Current playersRadioGlobal value: %1",_playerRadiosAreGlobal];
+diag_log format ["Running PROF_globalTfar on server. Current playersRadioGlobal value: %1",_playerRadiosAreGlobal];
 
 if (_playerRadiosAreGlobal == false) then { //if player has not had radio set to global most recently then cache current additional data and set additional to global
 	
@@ -29,7 +29,7 @@ if (_playerRadiosAreGlobal == false) then { //if player has not had radio set to
 		[_activeSwRadio, 0] call TFAR_fnc_setAdditionalSwStereo;
 		player setVariable ["playersRadioGlobal", true];
 		
-		diag_log format ["TAS_fnc_globalTFAR applied successfully."];
+		diag_log format ["PROF_fnc_globalTFAR applied successfully."];
 	}] remoteExec ["spawn",_humanPlayers];
 
 	missionNamespace setVariable ["playersRadioGlobal", true];
@@ -42,7 +42,7 @@ if (_playerRadiosAreGlobal == false) then { //if player has not had radio set to
 		[_activeSwRadio, (player getVariable "originalAdditionalStereo")] call TFAR_fnc_setAdditionalSwStereo;
 		player setVariable ["playersRadioGlobal", false];
 		
-		diag_log format ["TAS_fnc_globalTFAR undone successfully."];
+		diag_log format ["PROF_fnc_globalTFAR undone successfully."];
 	}] remoteExec ["spawn",_humanPlayers];
 
 	missionNamespace setVariable ["playersRadioGlobal", false];
@@ -62,13 +62,13 @@ if ( _playerRadiosAreGlobal == false) then { //if player has not had radio set t
 			[_activeSwRadio, 7] call TFAR_fnc_setAdditionalSwChannel; //lower by 1 cause internally this fnc is zero-based
 			[_activeSwRadio, 0] call TFAR_fnc_setAdditionalSwStereo;
 			player setVariable ["playersRadioGlobal", true];
-			//systemChat "TAS_fnc_globalTFAR applied successfully.";
+			//systemChat "PROF_fnc_globalTFAR applied successfully.";
 		} else { //if radio is already global, then undo it back to the cached settings
 			private _activeSwRadio = call TFAR_fnc_ActiveSwRadio; //do this again because private var would be stuck in the then section
 			[_activeSwRadio, (player getVariable "originalAdditionalChannel")] call TFAR_fnc_setAdditionalSwChannel;
 			[_activeSwRadio, (player getVariable "originalAdditionalStereo")] call TFAR_fnc_setAdditionalSwStereo;
 			player setVariable ["playersRadioGlobal", false];
-			//systemChat "TAS_fnc_globalTFAR undone successfully.";
+			//systemChat "PROF_fnc_globalTFAR undone successfully.";
 		};
 */
 

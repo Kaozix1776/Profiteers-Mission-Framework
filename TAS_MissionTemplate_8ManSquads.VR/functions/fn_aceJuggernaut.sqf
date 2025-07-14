@@ -17,10 +17,10 @@
 	Return: true
 
 	Examples: (RemoteExec is preferred if you can't guarantee the locality of the affected unit)
-	[_unit,10] call TAS_fnc_aceJuggernautAI;
-	[_unit,10] remoteExec ["TAS_fnc_aceJuggernautAI",_unit];
-	[_unit,10,false] call TAS_fnc_aceJuggernautAI;
-	[_unit,10,false] remoteExec ["TAS_fnc_aceJuggernautAI",_unit];
+	[_unit,10] call PROF_fnc_aceJuggernautAI;
+	[_unit,10] remoteExec ["PROF_fnc_aceJuggernautAI",_unit];
+	[_unit,10,false] call PROF_fnc_aceJuggernautAI;
+	[_unit,10,false] remoteExec ["PROF_fnc_aceJuggernautAI",_unit];
 */
 
 params ["_unit","_hitsBeforeDepletion",["_instaKillOnDepletion",true]];
@@ -33,8 +33,8 @@ if (_unit == player) then {
 _unit allowDamage false;
 _unit addEventHandler ["HandleDamage",{0}];
 _unit removeAllEventHandlers "HitPart";
-_unit setVariable ["TAS_fnc_juggernautHitsBeforeDepletion",_hitsBeforeDepletion]; 
-_unit setVariable ["TAS_fnc_juggernautInstalKillOnDepletion",_instaKillOnDepletion];
+_unit setVariable ["PROF_fnc_juggernautHitsBeforeDepletion",_hitsBeforeDepletion]; 
+_unit setVariable ["PROF_fnc_juggernautInstalKillOnDepletion",_instaKillOnDepletion];
 
 if (_isPlayer) then {
 	private _msg = format ["<br/><t color='#cc6600' size='3' align='center'>Welcome to the Juggernaut Suit</t><br/><br/><t color='#ff0000' size='3' align='center'>The Juggernaut Suit will allow you to take %1 hits without any adverse affects.</t><br/><br/>",_hitsBeforeDepletion]; 
@@ -54,12 +54,12 @@ _unit addEventHandler ["HitPart", {
 	if (_target == player) then {
 		_isPlayer = true;
 	};
-	_hits = _target getVariable ["TAS_fnc_juggernautHits",0]; 
+	_hits = _target getVariable ["PROF_fnc_juggernautHits",0]; 
 	_hits = _hits + 1; 
-	_target setVariable ["TAS_fnc_juggernautHits",_hits];
+	_target setVariable ["PROF_fnc_juggernautHits",_hits];
 	//hint format ["%1 has been hit %2 times",name _target,_hits];
-	if (_hits > (_target getVariable ["TAS_fnc_juggernautHitsBeforeDepletion",10]) ) then { 
-		if (_target getVariable ["TAS_fnc_juggernautInstalKillOnDepletion",false]) then {
+	if (_hits > (_target getVariable ["PROF_fnc_juggernautHitsBeforeDepletion",10]) ) then { 
+		if (_target getVariable ["PROF_fnc_juggernautInstalKillOnDepletion",false]) then {
 			_target setdamage 1;
 		} else {
 			_target allowDamage true;
@@ -75,7 +75,7 @@ _unit addEventHandler ["HitPart", {
 		_target call ACE_medical_treatment_fnc_fullHealLocal;
 
 		if (_isPlayer) then {
-			private _msg = format ["<br/><t color='#ff5050' size='2' align='center'>You've taken a hit!</t><br/><br/><t color='#cc6600' size='3' align='center'>Hits remaining: %1</t><br/><br/>",(_target getVariable ["TAS_fnc_juggernautHitsBeforeDepletion",10]) - hits]; 
+			private _msg = format ["<br/><t color='#ff5050' size='2' align='center'>You've taken a hit!</t><br/><br/><t color='#cc6600' size='3' align='center'>Hits remaining: %1</t><br/><br/>",(_target getVariable ["PROF_fnc_juggernautHitsBeforeDepletion",10]) - hits]; 
 			_msg = parseText (_msg);
 			hintSilent _msg;
 		};

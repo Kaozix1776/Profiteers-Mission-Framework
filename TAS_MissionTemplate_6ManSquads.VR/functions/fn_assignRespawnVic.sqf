@@ -26,21 +26,21 @@ private _onConfirm =
 	};
 	
 	//validate if object is already respawn vic, or is name is already used
-	/*systemChat str TAS_respawnLocations;
-	private _foundOccurance = [TAS_respawnLocations, _name] call BIS_fnc_findNestedElement; //returns "[]" if not found 
+	/*systemChat str PROF_respawnLocations;
+	private _foundOccurance = [PROF_respawnLocations, _name] call BIS_fnc_findNestedElement; //returns "[]" if not found 
 	systemChat str _foundOccurence;
 	if (_foundOccurence != []) exitWith {
 		hint "The same name is already set for another respawn vehicle!";
 		systemChat "The same name is already set for another respawn vehicle!";
 	};
-	_foundOccurance = [TAS_respawnLocations, _unit] call BIS_fnc_findNestedElement; //returns "[]" if not found
+	_foundOccurance = [PROF_respawnLocations, _unit] call BIS_fnc_findNestedElement; //returns "[]" if not found
 	systemChat str _foundOccurence;
 	if (_foundOccurence != []) exitWith {
 		hint "The given vehicle is already a respawn vehicle!";
 		systemChat "The given vehicle is already a respawn vehicle!";
 	};*/
 
-	[_unit,_name] remoteExec ["TAS_fnc_assignRespawnVicInit",2]; //exec on server
+	[_unit,_name] remoteExec ["PROF_fnc_assignRespawnVicInit",2]; //exec on server
 };
 [
 	"Set Respawn Vehicle Name", 
@@ -53,7 +53,7 @@ private _onConfirm =
 ] call zen_dialog_fnc_create;
 
 /*[_unit,_name] spawn { //create marker and update it on vehicle every minute while it's alive
-	private _marker = createMarkerLocal [format ["TAS_respawnVehicleMarker_%1",_name], position gangFourLeader]; //change for correct gang
+	private _marker = createMarkerLocal [format ["PROF_respawnVehicleMarker_%1",_name], position gangFourLeader]; //change for correct gang
 	_marker setMarkerType "mil_flag_noShadow";
 	_marker setMarkerColor "ColorUNKNOWN"; //TODO change based on player side?
 	_marker setMarkerText _name; //change for correct gang

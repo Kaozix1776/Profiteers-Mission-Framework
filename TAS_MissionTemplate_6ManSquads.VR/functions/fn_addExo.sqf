@@ -3,12 +3,12 @@ Replaces the given unit's loadout with a exosuit loadout from ExoMod Remastered 
 Replaces uniform/vest/weapons, but tries to keep the same inventory items + adds appropriate ammo and special meds.
 Sets respawn loadout of the player (if enabled in mission options) to the exosuit.
 
-[player] call TAS_fnc_addExo;
+[player] call PROF_fnc_addExo;
 */
 
 params ["_unit"];
 
-if !(isClass(configFile >> "CfgPatches" >> "PhoenixSystems_Exosuits")) exitWith {["fn_addExo called but EXOMOD is not loaded!",true] call TAS_fnc_error};
+if !(isClass(configFile >> "CfgPatches" >> "PhoenixSystems_Exosuits")) exitWith {["fn_addExo called but EXOMOD is not loaded!",true] call PROF_fnc_error};
 
 private _roleDescription = roleDescription _unit;
 private _roleDescriptionSimple = roleDescription _unit; //we'll use this in a sec
@@ -356,7 +356,7 @@ switch (true) do
 {_unit addPrimaryWeaponItem _x} forEach _weaponItems;
 
 private _loadout = [_unit] call CBA_fnc_getLoadout;
-_unit setVariable ["TAS_arsenalLoadout",_loadout];
+_unit setVariable ["PROF_arsenalLoadout",_loadout];
 
 private _imag  =  "<img size='8' image='media\logo256x256.paa' align='center'/>";
 private _output = "<br/><t color='#cc6600' size='3' align='center'>EXOSUIT POWER ONLINE</t><br/><br/>";

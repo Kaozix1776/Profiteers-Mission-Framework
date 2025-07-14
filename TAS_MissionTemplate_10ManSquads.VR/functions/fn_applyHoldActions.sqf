@@ -3,28 +3,28 @@
 
 //if client already has actions made, then remove them. If client does not have actions made, then setup appropriate vars.
 private ["_actionID"];
-if (isNil "TAS_holdActionIDs") then {
+if (isNil "PROF_holdActionIDs") then {
 	private _debugMessage = format ["%1 is applying their hold actions for the first time!", name player];
 	diag_log _debugMessage;
 	_debugMessage remoteExec ["diag_log",2];
 	
-	TAS_holdActionIDs = [];
+	PROF_holdActionIDs = [];
 } else {
-	private _debugMessage = format ["%1 is reapplying their hold actions! Old actions: %2", name player, TAS_holdActionIDs];
+	private _debugMessage = format ["%1 is reapplying their hold actions! Old actions: %2", name player, PROF_holdActionIDs];
 	diag_log _debugMessage;
 	_debugMessage remoteExec ["diag_log",2];
 
 	{
 		_x call BIS_fnc_holdActionRemove;
-	} forEach TAS_holdActionIDs;
-	TAS_holdActionIDs = [];
+	} forEach PROF_holdActionIDs;
+	PROF_holdActionIDs = [];
 };
 
 //apply the various actions
 
 //actions on the AceHealObject
 if (!isNil "AceHealObject") then { //check if the ace heal object actually exists so we dont get errors
-	if (TAS_aceHealObjectEnabled) then {
+	if (PROF_aceHealObjectEnabled) then {
 		_actionID = [
 			AceHealObject,											// Object the action is attached to
 			"Heal All Entities in 100m",										// Title of the action
@@ -42,11 +42,11 @@ if (!isNil "AceHealObject") then { //check if the ace heal object actually exist
 			false,												// Remove on completion
 			false												// Show in unconscious state 
 		] call BIS_fnc_holdActionAdd;
-		TAS_holdActionIDs pushBack [AceHealObject,_actionID,"heal"];	//add action info to var for later removal if requested
+		PROF_holdActionIDs pushBack [AceHealObject,_actionID,"heal"];	//add action info to var for later removal if requested
 	} else {
 		//systemChat "Ace Heal Object disabled.";
 	};
-	if (TAS_aceSpectateObjectEnabled) then {
+	if (PROF_aceSpectateObjectEnabled) then {
 		//enter spectator action
 		_actionID = [
 			AceHealObject,											// Object the action is attached to
@@ -65,11 +65,11 @@ if (!isNil "AceHealObject") then { //check if the ace heal object actually exist
 			false,												// Remove on completion
 			false												// Show in unconscious state 
 		] call BIS_fnc_holdActionAdd;
-		TAS_holdActionIDs pushBack [AceHealObject,_actionID,"spectator"];
+		PROF_holdActionIDs pushBack [AceHealObject,_actionID,"spectator"];
 	} else {
 		//systemChat "Ace Spectate Object disabled.";
 	};
-	if (TAS_respawnArsenalGear) then {
+	if (PROF_respawnArsenalGear) then {
 		_actionID = [
 			AceHealObject,											// Object the action is attached to
 			"Manually Save Loadout",										// Title of the action
@@ -79,7 +79,7 @@ if (!isNil "AceHealObject") then { //check if the ace heal object actually exist
 			"_caller distance _target < 15",						// Condition for the action to progress
 			{},													// Code executed when action starts
 			{},													// Code executed on every progress tick
-			{ private _loadout = [player] call CBA_fnc_getLoadout; player setVariable ["TAS_arsenalLoadout",_loadout]; },												// Code executed on completion
+			{ private _loadout = [player] call CBA_fnc_getLoadout; player setVariable ["PROF_arsenalLoadout",_loadout]; },												// Code executed on completion
 			{},													// Code executed on interrupted
 			[],													// Arguments passed to the scripts as _this select 3
 			2,													// Action duration [s]
@@ -87,22 +87,22 @@ if (!isNil "AceHealObject") then { //check if the ace heal object actually exist
 			false,												// Remove on completion
 			false												// Show in unconscious state 
 		] call BIS_fnc_holdActionAdd;
-		TAS_holdActionIDs pushBack [AceHealObject,_actionID,"save_loadout"];
+		PROF_holdActionIDs pushBack [AceHealObject,_actionID,"save_loadout"];
 	} else {
 		//systemChat "Respawn with Arsenal Loadout disabled.";
 		//diag_log text "Respawn with Arsenal Loadout disabled.";
 	};
-	if (TAS_respawnInVehicle || TAS_fobEnabled || TAS_rallypointsEnabled || TAS_flagpoleRespawn) then {
+	if (PROF_respawnInVehicle || PROF_fobEnabled || PROF_rallypointsEnabled || PROF_flagpoleRespawn) then {
 		_actionID = [
 			AceHealObject,											// Object the action is attached to
 			"Open Respawn GUI",										// Title of the action
 			"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",	// Idle icon shown on screen
 			"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",	// Progress icon shown on screen
-			"(_this distance _target < 15) && !(player getVariable ['TAS_waitingForReinsert',false]) && (TAS_respawnInVehicle || TAS_fobEnabled || TAS_rallypointsEnabled || TAS_flagpoleRespawn)",						// Condition for the action to be shown
+			"(_this distance _target < 15) && !(player getVariable ['PROF_waitingForReinsert',false]) && (PROF_respawnInVehicle || PROF_fobEnabled || PROF_rallypointsEnabled || PROF_flagpoleRespawn)",						// Condition for the action to be shown
 			"_caller distance _target < 15",						// Condition for the action to progress
 			{},													// Code executed when action starts
 			{},													// Code executed on every progress tick
-			{ [] spawn TAS_fnc_openRespawnGui; },												// Code executed on completion
+			{ [] spawn PROF_fnc_openRespawnGui; },												// Code executed on completion
 			{},													// Code executed on interrupted
 			[],													// Arguments passed to the scripts as _this select 3
 			1,													// Action duration [s]
@@ -110,7 +110,7 @@ if (!isNil "AceHealObject") then { //check if the ace heal object actually exist
 			false,												// Remove on completion
 			false												// Show in unconscious state 
 		] call BIS_fnc_holdActionAdd;
-		TAS_holdActionIDs pushBack [AceHealObject,_actionID,"respawn_gui"];
+		PROF_holdActionIDs pushBack [AceHealObject,_actionID,"respawn_gui"];
 	} else {
 		//systemChat "Respawn with Arsenal Loadout disabled.";
 		//diag_log text "Respawn with Arsenal Loadout disabled.";
@@ -118,7 +118,7 @@ if (!isNil "AceHealObject") then { //check if the ace heal object actually exist
 };
 
 //resupply object
-if (TAS_resupplyObjectEnabled) then { //check if the resupply object actually exists so we dont get errors
+if (PROF_resupplyObjectEnabled) then { //check if the resupply object actually exists so we dont get errors
 	if ((!isNil "CreateResupplyObject") && (!isNil "ResupplySpawnHelper")) then {
 		_actionID = [
 			CreateResupplyObject,											// Object the action is attached to
@@ -129,7 +129,7 @@ if (TAS_resupplyObjectEnabled) then { //check if the resupply object actually ex
 			"_caller distance _target < 15",						// Condition for the action to progress
 			{},													// Code executed when action starts
 			{},													// Code executed on every progress tick
-			{[ResupplySpawnHelper,false,true,false,true,true,true,250,"B_CargoNet_01_ammo_F"] call TAS_fnc_AmmoCrate;},													// Code executed on completion
+			{[ResupplySpawnHelper,false,true,false,true,true,true,250,"B_CargoNet_01_ammo_F"] call PROF_fnc_AmmoCrate;},													// Code executed on completion
 			{},													// Code executed on interrupted
 			[],													// Arguments passed to the scripts as _this select 3
 			1,													// Action duration [s]
@@ -137,16 +137,16 @@ if (TAS_resupplyObjectEnabled) then { //check if the resupply object actually ex
 			false,												// Remove on completion
 			false												// Show in unconscious state 
 		] call BIS_fnc_holdActionAdd;
-		TAS_holdActionIDs pushBack [CreateResupplyObject,_actionID,"create_resupply"];
+		PROF_holdActionIDs pushBack [CreateResupplyObject,_actionID,"create_resupply"];
 	} else { //if resupply object stuff is turned on but missing the objects needed for it to work, then display a warning that the resupply system will be disabled.
 		if (isServer) then {
 			systemChat "WARNING: Resupply Creator enabled, but missing the relevant spawner object(s) in mission! Disabling resupply creator...";
-			diag_log text "TAS-Mission-Template WARNING: Resupply Creator enabled, but missing the relevant spawner object(s) in mission! Disabling resupply creator...";
+			diag_log text "PROF-Mission-Template WARNING: Resupply Creator enabled, but missing the relevant spawner object(s) in mission! Disabling resupply creator...";
 		};
 	};
 };
 
-if (TAS_vassEnabled) then {
+if (PROF_vassEnabled) then {
 	{
 		private _object = _x;
 		_object = missionNamespace getVariable [_object, objNull]; //convert from string to object, otherwise we get errors
@@ -163,19 +163,19 @@ if (TAS_vassEnabled) then {
 				{},													// Code executed when action starts
 				{},													// Code executed on every progress tick
 				{
-					TAS_rebuyCost = 0; //setup rebuy variables, not private because need to escape the if statements
+					PROF_rebuyCost = 0; //setup rebuy variables, not private because need to escape the if statements
 					if !(primaryWeapon player == "") then { //if player has a primary weapon, add cost
-						TAS_rebuyCost = TAS_rebuyCost + TAS_rebuyCostPrimary;
+						PROF_rebuyCost = PROF_rebuyCost + PROF_rebuyCostPrimary;
 					};
 					if !(secondaryWeapon player == "") then { //if player has a secondary (launcher) weapon, add cost
-						TAS_rebuyCost = TAS_rebuyCost + TAS_rebuyCostSecondary;
+						PROF_rebuyCost = PROF_rebuyCost + PROF_rebuyCostSecondary;
 					};
 					if !(handgunWeapon player == "") then { //if player has a handgun weapon, add cost
-						TAS_rebuyCost = TAS_rebuyCost + TAS_rebuyCostHandgun;
+						PROF_rebuyCost = PROF_rebuyCost + PROF_rebuyCostHandgun;
 					};
-					player setVariable ["rebuyCost",TAS_rebuyCost];
+					player setVariable ["rebuyCost",PROF_rebuyCost];
 					player setVariable ["arsenalLoadout",getUnitLoadout player];
-					hint format ["Note: it will cost %1$ to rebuy your saved loadout.",TAS_rebuyCost];
+					hint format ["Note: it will cost %1$ to rebuy your saved loadout.",PROF_rebuyCost];
 				},												// Code executed on completion
 				{},													// Code executed on interrupted
 				[],													// Arguments passed to the scripts as _this select 3
@@ -184,7 +184,7 @@ if (TAS_vassEnabled) then {
 				false,												// Remove on completion
 				false												// Show in unconscious state 
 			] call BIS_fnc_holdActionAdd;
-			TAS_holdActionIDs pushBack [_object,_actionID,"vass_save_loadout"];
+			PROF_holdActionIDs pushBack [_object,_actionID,"vass_save_loadout"];
 
 			//add rebuy option, TODO: cost money depending on weapons selected
 			_actionID = [
@@ -197,11 +197,11 @@ if (TAS_vassEnabled) then {
 				{},													// Code executed when action starts
 				{},													// Code executed on every progress tick
 				{ 
-					_currentMoney = profileNamespace getVariable [TAS_vassShopSystemVariable,0]; //remove test and set to profileNamespace in future
+					_currentMoney = profileNamespace getVariable [PROF_vassShopSystemVariable,0]; //remove test and set to profileNamespace in future
 					_rebuyCost = player getVariable ["rebuyCost",0];
 					if (_currentMoney >= _rebuyCost) then {
 						_newMoney = _currentMoney - _rebuyCost;
-						profileNamespace setVariable [TAS_vassShopSystemVariable,_newMoney];
+						profileNamespace setVariable [PROF_vassShopSystemVariable,_newMoney];
 						hint format ["You now have %1$ in cash after rebuying your loadout.",_newMoney];
 						player setUnitLoadout (player getVariable ["arsenalLoadout",[]]);
 					} else {
@@ -215,18 +215,18 @@ if (TAS_vassEnabled) then {
 				false,												// Remove on completion
 				false												// Show in unconscious state 
 			] call BIS_fnc_holdActionAdd;
-			TAS_holdActionIDs pushBack [_object,_actionID,"vass_rebuy_loadout"];
+			PROF_holdActionIDs pushBack [_object,_actionID,"vass_rebuy_loadout"];
 		} else {
-			if (isServer || (serverCommandAvailable "#logout") || (!isNull (getAssignedCuratorLogic player))) then { //only do visual error if server (singleplayer testing) or admin or zeus
-				systemchat format ["WARNING: One or more objects (%1) in TAS_vassSigns does not exist!",_x];
+			if (isServer || (serverCommandAvailable "#logout") || (!isNull (gePROFsignedCuratorLogic player))) then { //only do visual error if server (singleplayer testing) or admin or zeus
+				systemchat format ["WARNING: One or more objects (%1) in PROF_vassSigns does not exist!",_x];
 			};
-			diag_log text format ["TAS-MISSION-TEMPLATE WARNING: One or more objects (%1) in TAS_vassSigns does not exist!",_x];
+			diag_log text format ["PROF-MISSION-TEMPLATE WARNING: One or more objects (%1) in PROF_vassSigns does not exist!",_x];
 		};
-	} forEach TAS_vassSigns;
+	} forEach PROF_vassSigns;
 };
 
-if (TAS_scavSystemEnabled) then {
-	private _object = missionNamespace getVariable [TAS_scavInsertActionObject, objNull]; //convert from string to object, otherwise we get errors
+if (PROF_scavSystemEnabled) then {
+	private _object = missionNamespace getVariable [PROF_scavInsertActionObject, objNull]; //convert from string to object, otherwise we get errors
 	if (!isNull _object) then {
 		_actionID = [
 			_object,											// Object the action is attached to
@@ -238,7 +238,7 @@ if (TAS_scavSystemEnabled) then {
 			{},													// Code executed when action starts
 			{},													// Code executed on every progress tick
 			{ 
-				[player] remoteExec ["TAS_fnc_scavInsertPlayer",2];
+				[player] remoteExec ["PROF_fnc_scavInsertPlayer",2];
 			},												// Code executed on completion
 			{},													// Code executed on interrupted
 			[],													// Arguments passed to the scripts as _this select 3
@@ -247,9 +247,9 @@ if (TAS_scavSystemEnabled) then {
 			false,												// Remove on completion
 			false												// Show in unconscious state 
 		] call BIS_fnc_holdActionAdd;
-		TAS_holdActionIDs pushBack [scavAction,_actionID,"scavReenterAction"];
+		PROF_holdActionIDs pushBack [scavAction,_actionID,"scavReenterAction"];
 	} else {
-		["Scav system enabled, but mission is missing the TAS_scavInsertActionObject to attach the insert action to for scavs to enter the AO!"] call TAS_fnc_error;
+		["Scav system enabled, but mission is missing the PROF_scavInsertActionObject to attach the insert action to for scavs to enter the AO!"] call PROF_fnc_error;
 	};
 };
 
@@ -259,7 +259,7 @@ if (TAS_scavSystemEnabled) then {
 /////////////////////////////////
 //Make sure that your actions are local only for effects! (i.e. don't have remoteExec or other commands that make them global)
 	//the last line of your command for a hold action should be something like "] call BIS_fnc_holdActionAdd;" (without the quotes)
-//add this at the end of your action: "TAS_holdActionIDs pushBack [AceHealObject,_actionID];" (without the quotes)
+//add this at the end of your action: "PROF_holdActionIDs pushBack [AceHealObject,_actionID];" (without the quotes)
 	//and at the start, add "_actionID = " (with right after that being your "[blahblahblah] call BIS_fnc_holdActionAdd")
 
 
@@ -271,6 +271,6 @@ if (TAS_scavSystemEnabled) then {
 //////////////////////
 ////Debug (at end)////
 //////////////////////
-private _debugMessage = format ["%1 has applied their hold actions! Actions applied: %2", name player, TAS_holdActionIDs];
+private _debugMessage = format ["%1 has applied their hold actions! Actions applied: %2", name player, PROF_holdActionIDs];
 diag_log _debugMessage;
 _debugMessage remoteExec ["diag_log",2];

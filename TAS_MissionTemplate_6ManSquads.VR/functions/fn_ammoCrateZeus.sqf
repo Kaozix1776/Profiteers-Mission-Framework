@@ -24,7 +24,7 @@ private _onConfirm =
 	if !(isNull _unit) then {
 		_boxClass = _unit;
 	};
-	[_pos,_isPara,_addMedical,_addBasicAmmo,_addAdvancedAmmo,_addGrenades,_emptyBox,_paradropHeight,_boxClass] call TAS_fnc_ammoCrate;
+	[_pos,_isPara,_addMedical,_addBasicAmmo,_addAdvancedAmmo,_addGrenades,_emptyBox,_paradropHeight,_boxClass] call PROF_fnc_ammoCrate;
 };
 
 [

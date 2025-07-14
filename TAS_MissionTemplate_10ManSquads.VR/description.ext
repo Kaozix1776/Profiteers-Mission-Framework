@@ -1,5 +1,17 @@
+//You can change the mission information below(i.e Mission title and loading images)
+	dev 			= "Guac,EvelynRedgrave" // Do not edit this line it just shows who made this framework
+
+	author			= "YOURNAMEHERE" // Your name goes here to display in the loading screen
+
+	onLoadName		= "ProfiteersMissionFramework v1.0" // Your mission name goes here for display in the loading screen & and in mission titlescreen text
+	onLoadMission	= "YOURTEXTHERE" // Mission Subtitle goes here
+	onLoadIntro		= "YOURTEXTHERE" // Mission Subtitle goes here
+
+	loadScreen      = "media\loading.jpg"; // Your custom cover image should replace the loading.jpg image in media
+    overviewPicture = "media\loading.jpg"; // Your custom cover image should replace the loading.jpg image in media
+
 respawnOnStart = -1; // 1 - Dont respawn on start. Don't run respawn script on start. 0 - Dont respawn on start. Run respawn script on start. 1 - Respawn on start. Run respawn script on start.
-disabledAI = 1; // 0: disabled - 1: enabled. Default: 0. Might want to disable this (0) for testing in MP so that the AI shows up.
+disabledAI = 0; // 0: disabled - 1: enabled. Default: 0. Might want to disable this (0) for testing in MP so that the AI shows up.
 enableDebugConsole = 1; // Allows the logged in admin to use the debug console from the escape page.
 zeusCompositionScriptLevel = 2;
 
@@ -12,12 +24,12 @@ class CfgDebriefingSections {
 };
 
 class ACEX_Fortify_Presets {
-    class TAS_Fortify_Objects {
-		displayName = "TAS Fortify Objects";
+    class PROF_Fortify_Objects {
+		displayName = "PROF Fortify Objects";
         objects[] = {
             //To add new items, copy the line two lines below, remove the comment slash marks, and replace classname and cost as needed
 			//Change 5 to whatever cost you want for the object
-			//You will also need to place the fortify module in Eden, set it to the "TAS_Fortify_Objects" preset
+			//You will also need to place the fortify module in Eden, set it to the "PROF_Fortify_Objects" preset
 			//{"Insert Object Classname Here", 5},
             {"Land_Plank_01_4m_F", 5},
             {"Land_Plank_01_8m_F", 10} //last entry do not include a comma at the end
@@ -36,14 +48,14 @@ class CfgMusic
 		name = "Example Sound 1";
 		sound[] = {"media\ExampleSound1.ogg", db+1, 1.0};
 		titles[] = {0,""};
-		musicClass = "TASMusicClass"; //needs the TAS addon to work, adds it to zeus (probably)
+		musicClass = "PROFMusicClass"; //needs the PROF addon to work, adds it to zeus (probably)
 	};
 	class 02
 	{
 		name = "Example Sound 2";
 		sound[] = {"media\ExampleSound2.ogg", db+1, 1.0};
 		titles[] = {0,""};
-		musicClass = "TASMusicClass";
+		musicClass = "PROFMusicClass";
 	};
 };
 
@@ -54,7 +66,7 @@ class Extended_Init_EventHandlers
     class CAManBase
     {
         class PunishCivKiller {
-            init = "if (side (_this select 0) == civilian) then {_this call TAS_fnc_punishCivKillerServer};"; //[_unit]
+            init = "if (side (_this select 0) == civilian) then {_this call PROF_fnc_punishCivKillerServer};"; //[_unit]
         };
     };
 };
@@ -73,7 +85,7 @@ allowFunctionsRecompile = 1; //VASS requires always enabled
 
 class CfgFunctions
 {
-	class TAS //tag, so TAG_fnc_functionName
+	class PROF //tag, so PROF_fnc_functionName
 	{
 		class init
 		{
@@ -83,6 +95,8 @@ class CfgFunctions
 		{
 			//commented-out items are script files run once or no times in normal gameplay and as such can just be execVMed
 			file = "functions"; //overwrites file path
+			class introtext.sqf
+			class ENDEX;
 			class ammoCrate; //todo combine these three
 			class assignRespawnVic;
 			//class autoFactionArsenal;
@@ -221,7 +235,7 @@ class CfgDiscordRichPresence {
     defaultLargeImageText="Waiting for map info...";     // Large image hover text
 	defaultSmallImageKey="select";      // Small image
     defaultSmallImageText="Waiting for role info...";     // Small image hover text
-	defaultButtons[]={"Autismo Seals Discord","https://discord.gg/yg564qhuEc"};          // Button texts and urls
+	defaultButtons[]={"Profiteers Discord","https://discord.gg/rwEy5mT45Z"};          // Button texts and urls
 	useTimeElapsed=1;             // Show time elapsed since the player connected (1 - true, 0 - false)
 };
 

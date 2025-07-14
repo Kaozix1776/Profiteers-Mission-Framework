@@ -10,7 +10,7 @@
 	Execution locality: local to _killer object
 
 	Examples:
-	[_killer,TAS_punishCivKillTimeout] remoteExec ["TAS_fnc_punishCivKillerLocal",_killer];
+	[_killer,PROF_punishCivKillTimeout] remoteExec ["PROF_fnc_punishCivKillerLocal",_killer];
 */
 
 //various setup
@@ -26,7 +26,7 @@ if (vehicle _killer != _killer) then {
 };
 
 //Put the offender into spectator and freeze them at the map origin. Heal him so he doesn't bleed out too.
-if (TAS_punishCivKillsSpectator) then {
+if (PROF_punishCivKillsSpectator) then {
 	[true, true, true] call ace_spectator_fnc_setSpectator;
 };
 [_killer] call ace_medical_treatment_fnc_fullHealLocal;
@@ -34,7 +34,7 @@ _killer allowDamage false;
 _killer setPosATL [0,0,0];
 _killer enableSimulationGlobal false;
 
-if (TAS_punishCivKillerHumiliate) then {
+if (PROF_punishCivKillerHumiliate) then {
 	(format ["%1 has been put into timeout for %2 seconds!",name _killer, _timeout]) remoteExec ["systemChat"];
 };
 
@@ -50,7 +50,7 @@ if (_forced) then {
 		sleep 1;
 	};
 } else {
-	while { (_time > 0) && ((_killer getVariable ["TAS_civsKilledByUnit",0]) > TAS_punishCivKillsThreshold) } do { //second condition is to allow for early out by zeus
+	while { (_time > 0) && ((_killer getVariable ["PROF_civsKilledByUnit",0]) > PROF_punishCivKillsThreshold) } do { //second condition is to allow for early out by zeus
 		_time = _time - 1;
 		//systemChat format ["You have killed too many civilians and must wait %1 before being reinserted!",[((_time)/60)+.01,"HH:MM"] call BIS_fnc_timetostring];
 		hintSilent format ["You have killed too many civilians and must wait %1 before being reinserted!",[((_time)/60)+.01,"HH:MM"] call BIS_fnc_timetostring];
@@ -59,19 +59,19 @@ if (_forced) then {
 };
 
 //unfreeze the player
-if (TAS_punishCivKillsSpectator) then {
+if (PROF_punishCivKillsSpectator) then {
 	[false, false, false] call ace_spectator_fnc_setSpectator;
 };
 _killer enableSimulationGlobal true;
 _killer allowDamage true;
 
 //reset civ kills counter
-(format ["%1 has killed %2 civs and has been punished for it, their record has now been wiped clean!",name _killer,_killer getVariable ["TAS_civsKilledByUnit",0]]) remoteexec ["diag_log",2];
-_killer setVariable ["TAS_civsKilledByUnit",0,true];
+(format ["%1 has killed %2 civs and has been punished for it, their record has now been wiped clean!",name _killer,_killer getVariable ["PROF_civsKilledByUnit",0]]) remoteexec ["diag_log",2];
+_killer setVariable ["PROF_civsKilledByUnit",0,true];
 
 //Restore the player's location depending on the mission settings, group leader status, and vehicle status
 if (leader _killer == _killer) then {
-	if (TAS_punishCivKillerTpToLeader) then {
+	if (PROF_punishCivKillerTpToLeader) then {
 		"You're your own group leader, so your position has been restored to your previous location instead of teleporting you to your group leader!"
 	};
 	if !(isNull _oldVehicle) then {
@@ -86,7 +86,7 @@ if (leader _killer == _killer) then {
 		systemChat "You've been teleported to your previous location!";
 	};
 } else {
-	if (TAS_punishCivKillerTpToLeader) then {
+	if (PROF_punishCivKillerTpToLeader) then {
 		private _leader = leader _killer;
 		if (vehicle _leader != _leader) then {
 			private _success = _killer moveInAny (vehicle _leader);

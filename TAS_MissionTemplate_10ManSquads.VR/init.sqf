@@ -9,19 +9,19 @@
 
 if (isDedicated || hasInterface) exitWith {};
 
-diag_log format ["TAS-MISSION-TEMPLATE: Init.sqf: Client has survived beheading."];
+diag_log format ["PROF-MISSION-TEMPLATE: Init.sqf: Client has survived beheading."];
 
 //show fps script by Mildly Interested/Bassbeard
 //Code here is for headless clients, main server is in initServer.sqf
-if (TAS_fpsDisplayEnabled) then {
+if (PROF_fpsDisplayEnabled) then {
 	//if (!isDedicated && !hasInterface && isMultiplayer) then { //anything in here gets executed on the headless clients
-		[] spawn TAS_fnc_showFps;
+		[] spawn PROF_fnc_showFps;
 		diag_log text "--------------------[Executed show_fps on HC]--------------------"; //this will only show in the HCs logs
 	//};
 };
 
 //where the magic happens for spawning on HC. Advanced users only.
-if (TAS_spawnUnitsOnHC) then {
+if (PROF_spawnUnitsOnHC) then {
 	
 	//setup our logics
 	private _HC1Present = if(isNil "HC1") then {false} else {true};
@@ -103,4 +103,13 @@ if (TAS_spawnUnitsOnHC) then {
 		
 	};
 };
+
+/* 
+Introduction Text - Cool Introduction stuff like location, date, time and mission name and locale
+
+When left with no parameters, as below, the script autogenerates the location based on the terrain name, and the mission title from the description.ext 
+You can optionally define replacements for the title & location, as is demonstrated in the trigger in the exemplar mission.
+*/
+["",""] call PROF_fnc_InfoText;
+
 //diag_log format ["Init.sqf: finished"];

@@ -1,17 +1,17 @@
 /*
 Changes loadout to gear appropriate for a "scaveneger" style one. Vaguely themed for woodland environments. Adjusts gear automatically based on presence of loaded mods.
 
-[unit] remoteExec ["TAS_fnc_scavLoadout",unit]; //execute locally to unit
-[player] call TAS_fnc_scavLoadout;
+[unit] remoteExec ["PROF_fnc_scavLoadout",unit]; //execute locally to unit
+[player] call PROF_fnc_scavLoadout;
 */
 params ["_unit",["_numberOfMags",8],["_giveRadio",0],["_addGrenades",false],["_changeSkill",true]];
 
 //check flag to see if scav system is running
-if !(TAS_scavSystemEnabled) exitWith {
-	["fn_scavLoadout called but system is disabled!",true] call TAS_fnc_error;
+if !(PROF_scavSystemEnabled) exitWith {
+	["fn_scavLoadout called but system is disabled!",true] call PROF_fnc_error;
 };
 
-if (_unit isEqualTo objNull) exitWith { ["fn_scavLoadout called with a null unit!",true] call TAS_fnc_error }; //BIS commands seem to fail gracefully with a non-existing unit (createVehicle fed nonexistant classname) but ACE will throw a hissy fit
+if (_unit isEqualTo objNull) exitWith { ["fn_scavLoadout called with a null unit!",true] call PROF_fnc_error }; //BIS commands seem to fail gracefully with a non-existing unit (createVehicle fed nonexistant classname) but ACE will throw a hissy fit
 
 if (_giveRadio == 0) then { //if not defined by params, default to yes if player and no if AI
 	if (isPlayer _unit) then {
@@ -142,7 +142,7 @@ if (_changeSkill) then {
 	if !(isPlayer _unit) then {
 		{
 			_unit setSkill [_x select 0, _x select 1];
-		} forEach TAS_scavSkill;
+		} forEach PROF_scavSkill;
 	};
 };
 
@@ -152,6 +152,6 @@ if (_giveRadio) then {
 	if (isPlayer _unit) then {
 		_unit linkItem "TFAR_anprc152";
 		waitUntil {(call TFAR_fnc_haveSWRadio)};
-		[(call TFAR_fnc_activeSwRadio), 1, TAS_scavRadioFreq] call TFAR_fnc_SetChannelFrequency;
+		[(call TFAR_fnc_activeSwRadio), 1, PROF_scavRadioFreq] call TFAR_fnc_SetChannelFrequency;
 	};
 };

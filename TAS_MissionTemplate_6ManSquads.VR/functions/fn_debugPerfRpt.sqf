@@ -6,7 +6,7 @@
 	Generates various debug information (mostly related to performance) to the RPT log on the given machine.
 
 	Examples:
-	[true,300,2,true] call TAS_fnc_debugPerfRpt;		//loops forever, generates report every 5 minutes, sends report information to the server log and also saves a copy to the client log
+	[true,300,2,true] call PROF_fnc_debugPerfRpt;		//loops forever, generates report every 5 minutes, sends report information to the server log and also saves a copy to the client log
 */
 
 private _duration 		= _this select 0;	//accepts true for infinite time

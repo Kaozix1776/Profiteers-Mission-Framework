@@ -32,7 +32,7 @@ private _situation = ["diary", ["Situation","
 /* ===============================================
     MISSION
      - Describe any objectives that the team is expected to complete.
-     - Summarize(!) the overall task. This MUST be short and clear.
+     - Summarize(!) the overall PROFk. This MUST be short and clear.
 */
 
 private _mission = ["diary", ["Mission","
@@ -59,7 +59,7 @@ private _execution = ["diary", ["Execution","
 <br/>
 *** Provide details on any available fire support. ***
 <br/><br/>
-<font size='18'>SPECIAL TASKS</font>
+<font size='18'>SPECIAL PROFKS</font>
 <br/>
 *** Insert instructions for specific units here. ***
 "]];
@@ -101,5 +101,5 @@ switch { side player } do {
         player createDiaryRecord _mission;
         player createDiaryRecord _situation;
     };
-    default { ["TAS_fnc_briefing ERROR: player has no side!",false] spawn TAS_fnc_error; };
+    default { ["PROF_fnc_briefing ERROR: player has no side!",false] spawn PROF_fnc_error; };
 };

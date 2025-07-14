@@ -2,7 +2,7 @@ params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
 if (isNull _unit) exitWith {
 	systemChat "Error: place the ace juggernaut zeus module on the unit that you wish to make into a juggernaut!";
-	diag_log "TAS MISSION TEMPLATE: fn_zeusAceJuggernaut was executed without being placed on an object!";
+	diag_log "PROF MISSION TEMPLATE: fn_zeusAceJuggernaut was executed without being placed on an object!";
 };
 
 //ZEN dialog
@@ -17,7 +17,7 @@ private _onConfirm =
 	//Get in params again
 	_in params [["_pos",[0,0,0],[[]],3], ["_unit",objNull,[objNull]]];
 
-	[_unit,_hits,_instaKill] remoteExec ["TAS_fnc_aceJuggernaut",_unit];
+	[_unit,_hits,_instaKill] remoteExec ["PROF_fnc_aceJuggernaut",_unit];
 
 };
 

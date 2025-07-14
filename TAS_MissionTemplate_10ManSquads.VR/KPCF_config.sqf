@@ -42,15 +42,15 @@ KPCF_crates = [
 KPCF_blacklistedItems = [
     "rhsusf_5Rnd_doomsday_Buck",
     "rhsusf_8Rnd_doomsday_Buck",
-    "TAS_6Rnd_doomsday_Buck",
-    "tas_acc_brightlite_sniper",
-    "tas_acc_brightlite_high",
-    "tas_acc_brightlite_low",
-    "tas_acc_brightlite_static",
-    "tas_acc_nightlite_sniper",
-    "tas_acc_nightlite_high",
-    "tas_acc_nightlite_low",
-    "tas_acc_nightlite_static"
+    "PROF_6Rnd_doomsday_Buck",
+    "PROF_acc_brightlite_sniper",
+    "PROF_acc_brightlite_high",
+    "PROF_acc_brightlite_low",
+    "PROF_acc_brightlite_static",
+    "PROF_acc_nightlite_sniper",
+    "PROF_acc_nightlite_high",
+    "PROF_acc_nightlite_low",
+    "PROF_acc_nightlite_static"
 ];
 
 // ----- This Variable will only be used with activated generatedLists -----

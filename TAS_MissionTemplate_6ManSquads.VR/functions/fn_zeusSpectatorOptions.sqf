@@ -75,40 +75,40 @@ private _onConfirm =
 	] remoteExec ["ace_spectator_fnc_updateCameraModes",0,true];
 
 	if (_spectateOnRespawn) then {
-		TAS_respawnSpectator = true;
+		PROF_respawnSpectator = true;
 	} else {
-		TAS_respawnSpectator = false;
+		PROF_respawnSpectator = false;
 	};
 	if (_respawnForceSpectate) then {
-		TAS_respawnSpectatorForceInterface = true;
+		PROF_respawnSpectatorForceInterface = true;
 	} else {
-		TAS_respawnSpectatorForceInterface = false;
+		PROF_respawnSpectatorForceInterface = false;
 	};
 	if (_respawnHidePlayer) then {
-		TAS_respawnSpectatorHideBody = true;
+		PROF_respawnSpectatorHideBody = true;
 	} else {
-		TAS_respawnSpectatorHideBody = false;
+		PROF_respawnSpectatorHideBody = false;
 	};
 	if (_respawnSpectateTime != 0) then {
-		TAS_respawnSpectatorTime = _respawnSpectateTime;
+		PROF_respawnSpectatorTime = _respawnSpectateTime;
 	} else {
-		TAS_respawnSpectatorTime = 0;
+		PROF_respawnSpectatorTime = 0;
 	};
 	if (_waveRespawn) then {
-		if !(TAS_waveRespawn) then {
-			[] remoteExec ["TAS_fnc_waveRespawn",2];
+		if !(PROF_waveRespawn) then {
+			[] remoteExec ["PROF_fnc_waveRespawn",2];
 		};
-		TAS_waveRespawn = true;
+		PROF_waveRespawn = true;
 	} else {
-		TAS_waveRespawn = false;
+		PROF_waveRespawn = false;
 	};
-	TAS_waveTime = _waveRespawnTimer;
-	publicVariable "TAS_respawnSpectator";
-	publicVariable "TAS_respawnSpectatorForceInterface";
-	publicVariable "TAS_respawnSpectatorHideBody";
-	publicVariable "TAS_respawnSpectatorTime";
-	publicVariable "TAS_waveRespawn";
-	publicVariable "TAS_waveTime";
+	PROF_waveTime = _waveRespawnTimer;
+	publicVariable "PROF_respawnSpectator";
+	publicVariable "PROF_respawnSpectatorForceInterface";
+	publicVariable "PROF_respawnSpectatorHideBody";
+	publicVariable "PROF_respawnSpectatorTime";
+	publicVariable "PROF_waveRespawn";
+	publicVariable "PROF_waveTime";
 };
 
 [

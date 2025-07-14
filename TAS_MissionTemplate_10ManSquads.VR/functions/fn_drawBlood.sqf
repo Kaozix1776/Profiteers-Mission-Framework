@@ -1,7 +1,7 @@
 //from https://gist.github.com/Drofseh/4b650d0c06f8034f2c8f69cedf5eb8f6, credit to Drofseh
 //script has been adapted to not need to be executed from unit init
 //must be executed locally on each client and JIPed
-	// if (isServer) then { this remoteExec ["TAS_fnc_drawBlood",0,true]; };
+	// if (isServer) then { this remoteExec ["PROF_fnc_drawBlood",0,true]; };
 //todo: does this persist after respawn?
 
 private _unit = _this;

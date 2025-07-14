@@ -18,4 +18,4 @@ while { (_delay > 0)} do {
 
 //sleep 15;
 //"" remoteExec ["hintSilent"];
-//[[["northbase","officers","southcentraldump"]],10,2] remoteExec ["TAS_fnc_spawnAiWithWarning",2];
+//[[["northbase","officers","southcentraldump"]],10,2] remoteExec ["PROF_fnc_spawnAiWithWarning",2];

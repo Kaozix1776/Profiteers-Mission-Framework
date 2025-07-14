@@ -8,7 +8,7 @@
 		If you experience errors, then spawn a unit in zeus and execute this code in its ZEN code box to get its REAL name: 
 			private _name = getText (configFile >> "cfgVehicles" >> typeOf _this >> "displayName"); copyToClipboard _name; systemChat _name;
 
-	[player,TAS_configFaction,"Rifleman",""] call TAS_fnc_assignLoadoutFromConfig;
+	[player,PROF_configFaction,"Rifleman",""] call PROF_fnc_assignLoadoutFromConfig;
 */
 params ["_givenUnit","_faction","_defaultUnitName","_prefix"];
 private ["_unit"]; //do it here to avoid reptition in the switch
@@ -17,10 +17,10 @@ private _debug = false;
 
 if (_debug) then { systemChat "a"; };
 
-if (_givenUnit getVariable ["TAS_disableConfigLoadoutAssignment",false]) exitWith { systemChat "Your loadout has not been assigned from config due to the Mission Maker disabling it for you in particular." }; //exit script if unit has been flagged to not have a changed loadout.
+if (_givenUnit getVariable ["PROF_disableConfigLoadouPROFsignment",false]) exitWith { systemChat "Your loadout has not been assigned from config due to the Mission Maker disabling it for you in particular." }; //exit script if unit has been flagged to not have a changed loadout.
 
-if ((_givenUnit getVariable ["TAS_overrideConfigLoadoutName","Display_name_of_unit_in_given_faction_whose_loadout_should_be_given_to_this_player"]) isNotEqualTo "Display_name_of_unit_in_given_faction_whose_loadout_should_be_given_to_this_player") then { //skip if on the default
-	_roleDescription = _givenUnit getVariable ["TAS_overrideConfigLoadoutName",_defaultUnitName];
+if ((_givenUnit getVariable ["PROF_overrideConfigLoadoutName","Display_name_of_unit_in_given_faction_whose_loadout_should_be_given_to_this_player"]) isNotEqualTo "Display_name_of_unit_in_given_faction_whose_loadout_should_be_given_to_this_player") then { //skip if on the default
+	_roleDescription = _givenUnit getVariable ["PROF_overrideConfigLoadoutName",_defaultUnitName];
 	_roleDescription = format ["%1%2",_prefix,_roleDescription];	//account for prefix
 } else {
 	/*if (isNil _roleDescription) then { //TODO arma always registers this as being nil for some reason???
@@ -61,7 +61,7 @@ switch (count _matchingUnitArray) do {
 		_unit = _matchingUnitArray select 0;
 	};
 	default { //either multiple or negative results found, uh...... This can occur for some vanilla NATO units where combat patrol units are also returned in addition to the normal units
-		_unit = _matchingUnitArray select TAS_configLoadoutNumber;
+		_unit = _matchingUnitArray select PROF_configLoadoutNumber;
 		//systemChat str count _matchingUnitArray;
 		//systemChat str _matchingUnitArray;
 		//systemChat "Warning: fn_assignLoadoutFromConfig has encountered unexpected state when attempting to match loadouts. It is possible that multiple matching loadouts were found; attempting to use the first loadout found.";
