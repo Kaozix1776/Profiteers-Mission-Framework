@@ -1,10 +1,11 @@
-# TAS Mission Template
+# Profiteers Mission Framework
 
 [A video guide to this mission template is now available!](https://www.youtube.com/playlist?list=PL8QEpH_FlMhFFts_uTFzbFsb0lDOmx2k9)
+(Courtesy of Guac)
 
 ## What is this?
 
-This is a mission template for multiplayer missions in [Arma 3](https://store.steampowered.com/app/107410/Arma_3/). Currently, this is used as the standard for missions ran in the TAS Arma Community.
+This is a mission template for multiplayer missions in [Arma 3](https://store.steampowered.com/app/107410/Arma_3/). Currently, this is proposed as the standard for missions ran in the Profiteers Arma 3 Community, was created by Guac for the TAS Arma Community.
 
 It aims to provide a common baseline of features for mission creators and players to use, as well as more advanced systems intended to be ran on a per-mission basis. Almost all systems can be toggled and/or modified in the configuration file, and a limited number of systems support in-mission editing via Zeus modules.
 
@@ -15,6 +16,7 @@ It aims to provide a common baseline of features for mission creators and player
 
 ## How to use
 [A video guide to using this mission template is now available!](https://www.youtube.com/playlist?list=PL8QEpH_FlMhFFts_uTFzbFsb0lDOmx2k9)
+(Courtesy of Guac)
 
 1. Download the latest version of the mission template from the releases tab in either `.zip` or `.pbo` format.
    - You can pick between squad sizes of six (in one fireteam), eight (in two fireteams), or ten (with two fireteams and a two-member commanding element).
@@ -95,6 +97,8 @@ Thank you to notable figures in the Arma community who have made their scripts a
 - Others (mostly forum/discord posters who've helped me but I've forgotten their names).
 This shared code is licensed under their original terms, usually [APL-SA](https://www.bohemia.net/community/licenses/arma-public-license-share-alike) or adjacent.
 
+
+This project has been forked by Evelyn Redgrave to use withing the Profiteers with the permission of the original creator Guac.
 
 
 This Mission Template overall, namely my first-party contributions, is licensed under [APL-SA](https://www.bohemia.net/community/licenses/arma-public-license-share-alike). Please pay attention to Section 3 of the license, which refers to your specific duties in attribution and maintaining its share-alike status.
