@@ -5,7 +5,7 @@
 
 ## What is this?
 
-This is a mission template for multiplayer missions in [Arma 3](https://store.steampowered.com/app/107410/Arma_3/). Currently, this is proposed as the standard for missions ran in the Profiteers Arma 3 Community, was created by Guac for the PROF Arma Community.
+This is a mission template for multiplayer missions in [Arma 3](https://store.steampowered.com/app/107410/Arma_3/). Currently, this is proposed as the standard for missions ran in the Profiteers Arma 3 Community, was created by Guac for the TAS Arma Community.
 
 It aims to provide a common baseline of features for mission creators and players to use, as well as more advanced systems intended to be ran on a per-mission basis. Almost all systems can be toggled and/or modified in the configuration file, and a limited number of systems support in-mission editing via Zeus modules.
 
@@ -58,7 +58,7 @@ Specific systems utilize these mods, and these systems will either automatically
    - Only used for fn_addExo, a niche function used only if the Mission Maker manually calls it.
 5. [cTab](https://steamcommunity.com/sharedfiles/filedetails/?id=871504836) (Most Editions)
    - Only used to automatically give cTab items at mission start. This is disabled by default.
-6. [PROF Unit Mod Redux](https://steamcommunity.com/sharedfiles/filedetails/?id=2769025224)
+6. [TAS Unit Mod Redux](https://steamcommunity.com/sharedfiles/filedetails/?id=2769025224)
    - Not a strict dependency, but provides some editor tools specifically made for interacting with the template.
    - Tools: copy map name to clipboard, automatically set author field, export layer to SQF.
 
