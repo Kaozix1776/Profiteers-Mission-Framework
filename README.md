@@ -98,8 +98,8 @@ Thank you to notable figures in the Arma community who have made their scripts a
 This shared code is licensed under their original terms, usually [APL-SA](https://www.bohemia.net/community/licenses/arma-public-license-share-alike) or adjacent.
 
 
-This project has been forked by Evelyn Redgrave to use withing the Profiteers with the permission of the original creator Guac.
-
+This project has been forked by Evelyn Redgrave to use within the Profiteers PMC Arma Community with the permission of the original creator Guac.
+Thanks to Guac.
 
 This Mission Template overall, namely my first-party contributions, is licensed under [APL-SA](https://www.bohemia.net/community/licenses/arma-public-license-share-alike). Please pay attention to Section 3 of the license, which refers to your specific duties in attribution and maintaining its share-alike status.
 If you use this mission template (in its entirity or partially), please do the following:
