@@ -1,0 +1,271 @@
+    dev                 = "Guac(Andrew), Evelyn Barker Redgrave"; // Do not edit this line, it just displays who created the missionPack
+    
+    author              = "Evelyn"; // Your name goes here for display in the loading screen
+
+    onLoadName          = "Unyielding Soul"; // Your mission name goes here for display in the loading screen & in the titlescreen text
+    onLoadMission       = "Break their souls, Break the Covenant."; // Mission subtitle goes here
+    onLoadIntro         = "Break their souls, Break the Covenant.";// Mission subtitle goes here
+
+    loadScreen          = "media\soul.jpg"; // Your custom cover image should repalce the loading.jpg image in Pictures
+    overviewPicture     = "media\soul.jpg"; // Your custom cover image should repalce the loading.jpg image in Pictures
+
+
+	disabledAI = 1; // 0: disabled - 1: enabled. Default: 0. Might want to disable this (0) for testing in MP so that the AI shows up.
+    //disableChannels[]        = {{0,false,true},{1,false,true},{2,true,true},{6,true,true}}; //Disables text channels GLOBAL/SIDE/LOCAL
+
+    respawnDelay           = 10; // Delay between respawns
+    respawnOnStart         = -1;
+
+    class Header
+    {
+        gameType = Coop;
+        minPlayers = 1;
+        maxPlayers = 50; // Change this to whatever the maximum playercount of your mission is
+     };
+
+enableDebugConsole = 1; // Allows the logged in admin to use the debug console from the escape page.
+zeusCompositionScriptLevel = 2;
+
+//Enables the AceX kill tracker in your mission, shows at end screen
+class CfgDebriefingSections {
+	class acex_killTracker {
+		title = "ACEX Killed Events";
+		variable = "acex_killTracker_outputText";
+	};
+};
+
+class ACEX_Fortify_Presets {
+    class TAS_Fortify_Objects {
+		displayName = "TAS Fortify Objects";
+        objects[] = {
+            //To add new items, copy the line two lines below, remove the comment slash marks, and replace classname and cost as needed
+			//Change 5 to whatever cost you want for the object
+			//You will also need to place the fortify module in Eden, set it to the "TAS_Fortify_Objects" preset
+			//{"Insert Object Classname Here", 5},
+            {"Land_Plank_01_4m_F", 5},
+            {"Land_Plank_01_8m_F", 10} //last entry do not include a comma at the end
+        };
+    };
+};
+
+//defines custom music, copy and change the "2"s to "3"s to create a third entry
+//replace "ExampleSound1.ogg" with your own sound file and name it the same thing
+//see the comment in the mission file for more information
+class CfgMusic
+{
+	sounds[] = {01,02};
+	class 01
+	{
+		name = "Example Sound 1";
+		sound[] = {"media\ExampleSound1.ogg", db+1, 1.0};
+		titles[] = {0,""};
+		musicClass = "TASMusicClass"; //needs the TAS addon to work, adds it to zeus (probably)
+	};
+	class 02
+	{
+		name = "Example Sound 2";
+		sound[] = {"media\ExampleSound2.ogg", db+1, 1.0};
+		titles[] = {0,""};
+		musicClass = "TASMusicClass";
+	};
+};
+
+//Uncomment this in order to automatically apply the civ killer script to all civilians spawned during the mission.
+/*
+class Extended_Init_EventHandlers
+{
+    class CAManBase
+    {
+        class PunishCivKiller {
+            init = "if (side (_this select 0) == civilian) then {_this call TAS_fnc_punishCivKillerServer};"; //[_unit]
+        };
+    };
+};
+*/
+
+// Allows functions to log to the RPT file.
+allowFunctionsLog = 1;
+
+// As a security measure, functions are by default protected against rewriting during mission.
+// This restriction does not apply in missions previewed from the editor.
+// allowFunctionsRecompile = "[0, 1] select (is3DENMultiplayer || is3DEN)"; //only enable in dev environment
+allowFunctionsRecompile = 1; //VASS requires always enabled
+
+// for VASS
+#include "VASS\gui\cfgGUI.hpp"
+
+class CfgFunctions
+{
+	class TAS //tag, so TAG_fnc_functionName
+	{
+		class init
+		{
+			class varsInit{file = "config.sqf"; preInit = 1;};
+		};
+		class Main //<ROOT>\Functions\Category\fn_functionName.sqf
+		{
+			//commented-out items are script files run once or no times in normal gameplay and as such can just be execVMed
+			file = "functions"; //overwrites file path
+			class ammoCrate; //todo combine these three
+			class assignRespawnVic;
+			//class autoFactionArsenal;
+			//class ifx_windowBreak;
+			//class mrg_objectDumper;
+			//class QS_icons.sqf;
+			class respawnGui;
+			class ServiceHeli;
+			class showFps;
+			class afkScript;
+			class globalTfar;
+			class paradropAi;
+			class paradropPlayers;
+			class zenCustomModulesRegister;
+			class ammoCrateZeus;
+			//class functionName {};
+			class earplugs;
+			class markerFollow;
+			class assignLoadoutFromConfig;
+			class zeusInfoText;
+			class spawnAiWithWarning;
+			class zeusTransferGroupOwnership;
+			class toggleMusic;
+			class debugPerfRpt;
+			class updateDiscordRichPresence;
+			class 3dGroupIcons;
+			class zeus3dGroupIcons;
+			class applyHoldActions;
+			class zeusSpectatorOptions;
+			class zeusApplySpectator;
+			class waveRespawn;
+			class zeusMarkerFollow;
+			class openRespawnGui;
+			class automatedReviewer;
+			class roleBasedArsenal;
+			class trimGroupName;
+			class assignRespawnVicInit;
+			class autoDisableGroupIcons;
+			class briefing;
+			class zeusGlobalTfar;
+			class drawBlood;
+			class markCustomObjects;
+			class arsenalCurate;
+			class bossDisplayHealth;
+			class bossHandleDamage;
+			class bossInit;
+			class assignRespawnFlagpole;
+			class assignRespawnFlagpoleInit;
+			class vassZeusEditMoney;
+			class vassEndMission;
+			class vassPlayerInit;
+			class error;
+			class punishCivKillerLocal;
+			class punishCivKillerServer;
+			class zeusPunishPlayer;
+			class zeusPunishProtectAllUnitsOfSide;
+			class createZeusAdmin;
+			class createZeusGuac;
+			class zeusSpawnAttackDog;
+			class playCornerVideo;
+			class addExo;
+			class scavLoadout;
+			class scavPlayerInit;
+			class scavPlayerEnd;
+			class scavServerInit;
+			class scavRespawnObjectives;
+			class scavSpawnRoamers;
+			class scavRespawnRoamers;
+			class zeusScavLoadout;
+			class aceJuggernaut;
+			class zeusAceJuggernaut;
+			class zeusSetUnitOnFire;
+			class burnUnitOrArea;
+			class markUnit;
+			class addMarkingAction;
+			class zeusMarkUnit;
+			class zeusScavSpawnGroup;
+			class scavFindSuitableBuilding;
+			class scavInsertPlayer;
+			class scavCheckIfNearbyPlayer;
+			class scavHandleExtractSmokes;
+			class infoText;
+			class endex;
+		};
+		class buildFob
+		{
+			file = "buildfob";
+			class cmdRallypoint;
+			class alphaRallypoint; //TODO condense
+			class bravoRallypoint;
+			class charlieRallypoint;
+			class deltaRallypoint;
+			class echoRallypoint;
+			class foxtrotRallypoint;
+			class golfRallypoint;
+			class hotelRallypoint;
+			class reconRallypoint;
+			class cmdRallyOverrun;
+			class alphaRallyOverrun;
+			class bravoRallyOverrun;
+			class charlieRallyOverrun;
+			class deltaRallyOverrun;
+			class echoRallyOverrun;
+			class foxtrotRallyOverrun;
+			class golfRallyOverrun;
+			class hotelRallyOverrun;
+			class reconRallyOverrun;
+			class fobPackup;
+			class fobOverrun;
+			class fobBuild;
+			class initFOB;
+			class initRallypoints;
+		};
+	};
+
+	/*	KiloSwiss	*/
+	/*  https://steamcommunity.com/sharedfiles/filedetails/?id=2056899653  */
+	class KS
+	{
+		class ceaseFireFunctions
+		{
+			file = "functions\ceasefire";
+			class ceaseFire {};
+			class ceaseFireEH_onFiredMan {};
+			class ceaseFireEH_blockMuzzles {};
+		};
+	};
+
+	// for VASS
+	#include "VASS\CfgFunctions.hpp"
+};
+
+class CfgDiscordRichPresence {
+    applicationID="1004558588645212291";             // Provided by discord
+    defaultDetails="In a mission";            // Upper text
+    defaultState="Loading...";              // Lower text  
+    defaultLargeImageKey="logoclean";      // Large image
+    defaultLargeImageText="Waiting for map info...";     // Large image hover text
+	defaultSmallImageKey="select";      // Small image
+    defaultSmallImageText="Waiting for role info...";     // Small image hover text
+	defaultButtons[]={"Autismo Seals Discord","https://discord.gg/yg564qhuEc"};          // Button texts and urls
+	useTimeElapsed=1;             // Show time elapsed since the player connected (1 - true, 0 - false)
+};
+
+/*
+    Killah Potatoes Cratefiller v1.1.0
+
+    Author: Dubjunk - https://github.com/KillahPotatoes
+    License: GNU General Public License v3.0 - https://www.gnu.org/licenses/gpl-3.0.html
+
+    Description:
+    If you don't have an own description.ext file in your mission, you can just use this one.
+    Otherwise copy the content below this comment block right at the end of your description.ext file, if you're unsure how to merge them.
+*/
+/*
+#include "KPGUI\KPGUI_defines.hpp"
+#include "KPCF\ui\KPCF_dialog.hpp"
+
+class CfgFunctions {
+    // If you already have this class opened in your description.ext, copy and paste just this include inside of it.
+    #include "KPCF\KPCF_functions.hpp"
+};
+*/

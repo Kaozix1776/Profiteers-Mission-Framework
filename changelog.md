@@ -37,7 +37,7 @@
 2. Update populateInventory to use advanced medical items.
 3. Update fn_automatedReviewer to check all the new config variables.
 
-**Full Changelog**: https://github.com/Guac0/PROF-Mission-Template/compare/v11.2...v12.0
+**Full Changelog**: https://github.com/Guac0/TAS-Mission-Template/compare/v11.2...v12.0
 
 **Playerside changelog**:
 1. Added various torture zeus modules for Zeuses to use on the playerbase (set units on fire, spawn attack dog, timeout player, make unit into juggernaut, etc). Fun times ahead!
