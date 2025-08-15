@@ -1,20 +1,20 @@
     dev                 = "Guac(Andrew), Evelyn Barker Redgrave"; // Do not edit this line, it just displays who created the missionPack
     
-    author              = "Evelyn"; // Your name goes here for display in the loading screen
+    author              = "YOURNAMEHERE"; // Your name goes here for display in the loading screen
 
-    onLoadName          = "Unyielding Soul"; // Your mission name goes here for display in the loading screen & in the titlescreen text
-    onLoadMission       = "Break their souls, Break the Covenant."; // Mission subtitle goes here
-    onLoadIntro         = "Break their souls, Break the Covenant.";// Mission subtitle goes here
+    onLoadName          = "ProfiteersMissionFramework 1.0.0"; // Your mission name goes here for display in the loading screen & in the titlescreen text
+    onLoadMission       = "YOURTEXTHERE"; // Mission subtitle goes here
+    onLoadIntro         = "YOURTEXTHERE";// Mission subtitle goes here
 
-    loadScreen          = "media\soul.jpg"; // Your custom cover image should repalce the loading.jpg image in Pictures
-    overviewPicture     = "media\soul.jpg"; // Your custom cover image should repalce the loading.jpg image in Pictures
+    loadScreen          = "media\YOURJPG.jpg"; // Your custom cover image should repalce the loading.jpg image in Pictures
+    overviewPicture     = "media\YOURJPG.jpg"; // Your custom cover image should repalce the loading.jpg image in Pictures
 
 
 	disabledAI = 1; // 0: disabled - 1: enabled. Default: 0. Might want to disable this (0) for testing in MP so that the AI shows up.
     //disableChannels[]        = {{0,false,true},{1,false,true},{2,true,true},{6,true,true}}; //Disables text channels GLOBAL/SIDE/LOCAL
 
     respawnDelay           = 10; // Delay between respawns
-    respawnOnStart         = -1;
+    respawnOnStart         = -1; // Don't change this value, it'll break shit.
 
     class Header
     {

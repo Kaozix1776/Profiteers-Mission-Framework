@@ -1,10 +1,11 @@
-# TAS Mission Template
+# Profiteers Mission Framework
 
 [A video guide to this mission template is now available!](https://www.youtube.com/playlist?list=PL8QEpH_FlMhFFts_uTFzbFsb0lDOmx2k9)
+[Courtesy of Guac]
 
 ## What is this?
 
-This is a mission template for multiplayer missions in [Arma 3](https://store.steampowered.com/app/107410/Arma_3/). Currently, this is used as the standard for missions ran in the TAS Arma Community.
+This is a mission template for multiplayer missions in [Arma 3](https://store.steampowered.com/app/107410/Arma_3/). Currently, this is proposed as a standard for missions ran in the Profiteers Arma Community.
 
 It aims to provide a common baseline of features for mission creators and players to use, as well as more advanced systems intended to be ran on a per-mission basis. Almost all systems can be toggled and/or modified in the configuration file, and a limited number of systems support in-mission editing via Zeus modules.
 
@@ -15,22 +16,22 @@ It aims to provide a common baseline of features for mission creators and player
 
 ## How to use
 [A video guide to using this mission template is now available!](https://www.youtube.com/playlist?list=PL8QEpH_FlMhFFts_uTFzbFsb0lDOmx2k9)
+[Courtesy of Guac]
 
-1. Download the latest version of the mission template from the releases tab in either `.zip` or `.pbo` format.
-   - You can pick between squad sizes of six (in one fireteam), eight (in two fireteams), or ten (with two fireteams and a two-member commanding element).
-2. Extract the mission template and place the resulting `TAS_MissionTemplate_*ManSquads.VR` folder in your `C:\Users\YourUsernameHere\Documents\Arma 3\mpmissions` folder.
+!!This is WIP!!
+I will add a composition or a template mission for setup soon, use the TAS mission.sqm for now.
+
+1. Download the latest version of the mission template from the releases tab in `.zip`format.
+2. Extract the Mission Framework, put the files you extracted inside your mission file, these missions can be found in `C:\Users\YourUsernameHere\Documents\Arma 3\mpmissions` folder.
    - Adjust the drive letter and file path as needed.
-3. Change the `VR` part of the folder name to the world name of the terrain you want to use for your mission.
-   - If you don't know the name, open the terrain in the 3den Editor and open the debug console and execute `worldName` to get the world name of that terrain.
 4. Open the mission file in the 3den Editor.
    - It will be under the `mpmissions` folder.
-5. You will now be in the 3den Editor view. There are a few distinct sections of the template, such as required items (for scripts to function), useful examples that you can delete if you're not using them, and the players. Read the comment modules scattered around each section and each item in each section to see what's going on.
-6. This step is interchangable with the 3den Editor customization step. You should open `config.sqf` and read through each option to configure the Mission Template's scripts settings.
+5. This step is interchangable with the 3den Editor customization step. You should open `config.sqf` and read through each option to configure the Mission Template's scripts settings.
    - Note that enabling some scripts requires corresponding objects in the 3den Editor part of the template to exist, so read the comments carefully before deleting items in the editor view (although the scripts are largely fault-tolerant and will disable themselves if a required object is missing). 
    - However, the default settings in `config.sqf` should be suitable for most missions!
-7. Now that you have the Mission Template configured, you can build your mission as normal.
+6. Now that you have the Mission Template configured, you can build your mission as normal.
 - If you have already built your mission and wish to merge it, make sure to merge it INTO the Mission Template's 3den file, as doing it the other way around will not copy over the script files or mission settings (the ones you configure in the `Settings` tab of the 3den Editor).
-8. Make sure to test your mission! In addition to your normal mission testing, you should do the following to make sure you set up the Mission Template correctly:
+7. Make sure to test your mission! In addition to your normal mission testing, you should do the following to make sure you set up the Mission Template correctly:
 - When loading and testing the mission, keep an eye out for error messages! These can either be via the `systemchat` text box (gray text in the bottom left), or via the standard Arma error messages with the black boxes in the middle of your screen.
 - Respawn to make sure that respawns are functioning correctly.
 - Run the automated reviewer script! This is more for collecting mission statistics (very useful for community's mission reviewers who need to review stuff like overall number of units and etc), but it can also point out any custom settings you have applied and a few common errors. To use the automated reviewer, play the mission and execute `[] call fn_automatedReviewer.sqf` in the debug console. The results will be copied to your clipboard after a short time.
@@ -84,6 +85,10 @@ This Mission Template and its components, while fairly modular, are intended to 
 However, I reserve the right to limit support for cases that integrate only some of my work, as maintaining skeletonized sections of the codebase is difficult.
 
 ## Thank yous and Licensing
+
+A big thank you to Guac for allowing the Profiteers to fork the TAS Mission Template and use it for the Profiteers community.
+
+Below is written by Guac like most of this Readme file is, any changes done by the current maintainers of this Framework will be added above to indicate they were added by the Profiteers and not Guac.
 
 Thank you to notable figures in the Arma community who have made their scripts available for use to the community at large. This mission template contains scripts copied in their entirety, modified from the original, or inspired by the original scripts made by the following:
 - Quicksilver (QS_Icons Blue Force Tracking script)

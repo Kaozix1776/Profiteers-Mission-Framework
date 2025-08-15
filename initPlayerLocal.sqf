@@ -837,7 +837,11 @@ if (TAS_ModLog) then {
 		//[player,"I am running AAA! Shame on me!"] remoteExec ["globalChat"];
 		_shameMessage = format ["%1 is running AAA",name player];
 		_shameMessage remoteExec ["diag_log"];
-	};*/
+	};
+	!!IMPORTANT!!
+	This will need changing as most of these mods aren't relevant in the Profiteers, so they need to be changed.
+	*/
+
 };
 
-["",""] call TAS_fnc_InfoText;
+["",""] call TAS_fnc_InfoText; //Parameters for this are ["CUSTOM TITLE", "CUSTOM LOCATION",LONG OR SHORT DATE(boolean value either true or false),"ANIMATION SELECTION"], copy and paste
