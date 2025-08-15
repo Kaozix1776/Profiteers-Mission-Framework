@@ -1,5 +1,7 @@
 # Profiteers Mission Framework
 
+![alt text](https://github.com/Kaozix1776/Profiteers-Mission-Framework/blob/main/media/YOURJPG.jpg?raw=true)
+
 [A video guide to this mission template is now available!](https://www.youtube.com/playlist?list=PL8QEpH_FlMhFFts_uTFzbFsb0lDOmx2k9)
 [Courtesy of Guac]
 
