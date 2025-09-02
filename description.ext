@@ -105,7 +105,7 @@ class CfgFunctions
 			//commented-out items are script files run once or no times in normal gameplay and as such can just be execVMed
 			file = "functions"; //overwrites file path
 			class ammoCrate; //todo combine these three
-			class assignRespawnVic;
+			//class assignRespawnVic;
 			//class autoFactionArsenal;
 			class ifx_windowBreak;
 			//class mrg_objectDumper;
@@ -140,7 +140,7 @@ class CfgFunctions
 			class automatedReviewer;
 			class roleBasedArsenal;
 			class trimGroupName;
-			class assignRespawnVicInit;
+			//class assignRespawnVicInit;
 			class autoDisableGroupIcons;
 			class briefing;
 			class zeusGlobalTfar;
@@ -171,6 +171,7 @@ class CfgFunctions
 			class infoText;
 			class endex;
 			class MHQSetup;
+			class spawnAiWithoutWarning;
 		};
 		/* class buildFob
 		{

@@ -4,6 +4,7 @@
 // this function creates a respawn menu after the player respawns (called from onPlayerRespawn.sqf)
 //====================================================
 //TODO make function, fix teleporting into vehicle
+//I do not understand anything that's going on here - Evelyn
 
 disableSerialization;
 //various vars

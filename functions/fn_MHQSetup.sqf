@@ -36,9 +36,6 @@ Example:
 // Default old construction audio
 [this] call TAS_fnc_MHQSetup; 
 
-// Modern construction audio
-[this,true] call TAS_fnc_MHQSetup;
-
 // Logistics system with spawner 4m to the rear of the vehicle 
 [this,true,true,180,4] call TAS_fnc_MHQSetup;
 
