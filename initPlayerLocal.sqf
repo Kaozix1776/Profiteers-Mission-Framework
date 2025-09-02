@@ -761,10 +761,6 @@ if (TAS_allowBloodDrawing) then {
 	player remoteExec ["TAS_fnc_drawBlood",0,true];
 };
 
-if (TAS_vassEnabled) then {
-	[] spawn TAS_fnc_vassPlayerInit;
-};
-
 if (TAS_addUnitMarkAction) then {
 	[] spawn TAS_fnc_addMarkingAction;
 };

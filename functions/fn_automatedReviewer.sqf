@@ -218,24 +218,6 @@ _outputArray pushBack format ["Mission Template Settings Check:"];
 	//["TAS_bossParts",TAS_bossParts,[[leg1,"LeftLeg",10],[leg2,"RightLeg",10],[torso,"Torso",30],[head,"Head",20]]], //not checked due to 'leg1' and etc being ANY if not defined and thus not matching
 	["TAS_bossInterval",TAS_bossInterval,0.5],
 	["TAS_bossHealthModifier",TAS_bossHealthModifier,1],
-	//VASS options
-	["TAS_vassEnabled",TAS_vassEnabled,false],
-	["TAS_vassShopSystemVariable",TAS_vassShopSystemVariable,"TAS_exampleVassMoney"],
-	["TAS_vassShopSystemLoadoutVariable",TAS_vassShopSystemLoadoutVariable,"TAS_exampleVassLoadout"],
-	["TAS_vassDefaultBalance",TAS_vassDefaultBalance,700],
-	["TAS_vassBonusStartingMoney",TAS_vassBonusStartingMoney,0],
-	["TAS_vassPrebriefing",TAS_vassPrebriefing,["In this campaign, we have to buy our gear from the black market.","Each player's balance and loadout at mission end will carry over to the next mission.","All free items (cosmetics) are in the red crate's ace arsenal, everything else is in the other box.","Save your loadout at the sign to be able to rebuy it in the future for a small cost."]],
-	["TAS_vassShops",TAS_vassShops,["arsenal_1","arsenal_2"]],
-	["TAS_vassSigns",TAS_vassSigns,["AceHealObject"]],
-	["TAS_rebuyCostPrimary",TAS_rebuyCostPrimary,35],
-	["TAS_rebuyCostSecondary",TAS_rebuyCostSecondary,50],
-	["TAS_rebuyCostHandgun",TAS_rebuyCostHandgun,15],
-	//other assorted stuff 
-	["TAS_vanillaStaminaDisabled",TAS_vanillaStaminaDisabled,true],
-	["TAS_doAimCoefChange",TAS_doAimCoefChange,false],
-	["TAS_aimCoef",TAS_aimCoef,0.5],
-	["TAS_recoilCoef",TAS_recoilCoef,0.75],
-	["TAS_ctabEnabled",TAS_ctabEnabled,false],
 	//////////////////////////////////
 	////////Template Options//////////
 	//////////////////////////////////

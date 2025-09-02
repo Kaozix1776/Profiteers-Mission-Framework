@@ -4,7 +4,7 @@ private _moduleList = [];
 private _systemsModuleList = [];
 private _logisticsModuleList = [];
 private _protectModuleList = [];
-private _vassModuleList = [];
+
 
 if (TAS_zeusResupply) then {
 	_logisticsModuleList pushBack ["Spawn Resupply Crate", {_this call TAS_fnc_ammoCrateZeus}];
@@ -129,26 +129,6 @@ if (TAS_zeusServiceVehicle) then {
 	if !(TAS_cleanBriefing) then { player createDiaryRecord ["tasMissionTemplate", ["Zeus Service Vehicle", "Disabled."]]; };
 };
 
-if (TAS_vassEnabled) then {
-	_vassModuleList pushBack ["Edit Balance of Player", {
-		if (isNull (_this select 1)) exitWith {systemChat "Place the module on a unit!"};
-		_this call TAS_fnc_vassZeusEditMoney
-	}];
-	_vassModuleList pushBack ["View balance of player", {
-		if (isNull (_this select 1)) exitWith {systemChat "Place the module on a unit!"}; 
-		[[], {
-			private _currentMoney = profileNamespace getVariable [TAS_vassShopSystemVariable,0];
-			[[name player, _currentMoney], {
-				private _message = format ["%1 has a balance of %2.",_this select 0, _this select 1];
-				systemChat _message;
-				hint _message;
-			}] remoteExec ["spawn",remoteExecutedOwner];
-		}] remoteExec ["spawn",_this select 1];
-	}];
-	_vassModuleList pushBack ["End Mission", {
-		[] remoteExec ["TAS_fnc_vassEndMission"];
-	}];
-};
 
 if (true) then { //always be available
 	_protectModuleList pushBack ["Add Protected Unit", {
@@ -282,18 +262,3 @@ if (true) then { //always be available
 		diag_log format ["TAS-MISSION-TEMPLATE WARNING: Failed to register custom zeus module! Name of failed module: %1.",_x select 0];
 	};
 } forEach _protectModuleList;
-
-if (TAS_vassEnabled) then {
-	{
-		private _successfullyRegistered = 
-		[
-			"TAS Shop System", 
-			(_x select 0), 
-			(_x select 1)
-		] call zen_custom_modules_fnc_register;
-		if (!_successfullyRegistered) then {
-			systemChat format ["TAS-MISSION-TEMPLATE WARNING: Failed to register custom zeus module! Name of failed module: %1.",_x select 0];
-			diag_log format ["TAS-MISSION-TEMPLATE WARNING: Failed to register custom zeus module! Name of failed module: %1.",_x select 0];
-		};
-	} forEach _vassModuleList;
-};

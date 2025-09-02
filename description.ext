@@ -89,7 +89,7 @@ allowFunctionsLog = 1;
 // As a security measure, functions are by default protected against rewriting during mission.
 // This restriction does not apply in missions previewed from the editor.
 // allowFunctionsRecompile = "[0, 1] select (is3DENMultiplayer || is3DEN)"; //only enable in dev environment
-allowFunctionsRecompile = 1; //VASS requires always enabled
+allowFunctionsRecompile = 1; 
 
 
 class CfgFunctions
