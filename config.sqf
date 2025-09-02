@@ -522,11 +522,11 @@
 
 
 
-		TAS_templateVersion 	= 12.0; //if it's a major release (like 10.0), note that arma will truncate the empty decimal to just '10'
+		TAS_templateVersion 	= 1.1.2; //if it's a major release (like 10.0), note that arma will truncate the empty decimal to just '10'
 		//publicVariable "TAS_templateVersion";
 
 
-		TAS_doTemplateBriefing 	= true;
+		TAS_doTemplateBriefing 	= false;
 		//publicVariable "TAS_doTemplateBriefing";
 		TAS_templateBriefing = [
 			"1. Added various torture zeus modules for Zeuses to use on the playerbase (set units on fire, spawn attack dog, timeout player, make unit into juggernaut, etc). Fun times ahead!",
