@@ -1,7 +1,7 @@
 /*
 
 Call as follows:
-[] spawn Waldo_fnc_ENDEX;
+[] spawn TAS_fnc_endex;
 
 */
 //systemChat Endex message

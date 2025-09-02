@@ -107,7 +107,7 @@ class CfgFunctions
 			class ammoCrate; //todo combine these three
 			class assignRespawnVic;
 			//class autoFactionArsenal;
-			//class ifx_windowBreak;
+			class ifx_windowBreak;
 			//class mrg_objectDumper;
 			//class QS_icons.sqf;
 			class respawnGui;
@@ -168,16 +168,11 @@ class CfgFunctions
 			class markUnit;
 			class addMarkingAction;
 			class zeusMarkUnit;
-			class zeusScavSpawnGroup;
-			class scavFindSuitableBuilding;
-			class scavInsertPlayer;
-			class scavCheckIfNearbyPlayer;
-			class scavHandleExtractSmokes;
 			class infoText;
 			class endex;
 			class MHQSetup;
 		};
-		class buildFob
+		/* class buildFob
 		{
 			file = "buildfob";
 			class cmdRallypoint;
@@ -205,7 +200,7 @@ class CfgFunctions
 			class fobBuild;
 			class initFOB;
 			class initRallypoints;
-		};
+		}; */
 	};
 
 	/*	KiloSwiss	*/
