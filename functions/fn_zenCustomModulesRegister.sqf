@@ -188,10 +188,6 @@ if (true) then { //always be available
 		_this call TAS_fnc_zeusSpawnAttackDog;
 	}];
 
-	_moduleList pushBack ["Give Scav Loadout", {
-		_this call TAS_fnc_zeusScavLoadout;
-	}];
-
 	_moduleList pushBack ["Make Unit Into Juggernaut", {
 		_this call TAS_fnc_zeusAceJuggernaut;
 	}];
@@ -208,9 +204,6 @@ if (true) then { //always be available
 		_this call TAS_fnc_zeusSetUnitOnFire;
 	}];
 
-	_moduleList pushBack ["Spawn Scav Group", {
-		_this call TAS_fnc_zeusSpawnScavGroup;
-	}];
 	
 	if (isClass(configFile >> "CfgPatches" >> "PhoenixSystems_Exosuits")) then {
 		_moduleList pushBack ["Equip Unit with Exosuit (EXOMOD)", {

@@ -14,10 +14,6 @@ if (TAS_doAimCoefChange) then {
 	player setUnitRecoilCoefficient TAS_recoilCoef;
 };
 
-if (TAS_scavSystemEnabled) exitWith { //exit early since stuff beyond this is all loadout/reinsert stuff
-	[] spawn TAS_fnc_scavPlayerInit;
-};
-
 //respawn with death gear
 if (TAS_respawnDeathGear) then {
 	private _loadout = player getVariable ["TAS_deathLoadout",[]]; //Load dead player's loadout. Use CBA instead of vanilla. BOOL is for refilling mags.
